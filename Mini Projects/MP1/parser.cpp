@@ -133,6 +133,7 @@ void writeLUTInfo(char *arg){
 	}
 	ofstream newFile(file);
 
+	newFile << "-----------------------------------------------------" << endl;
 
 	for(auto gateName: lut.Allgate_name){
 		newFile << "cell: " << gateName << endl;
@@ -176,7 +177,7 @@ void writeLUTInfo(char *arg){
 		}
 		newFile << endl << endl << endl;
 	}
-
+	newFile << "-----------------------------------------------------" << endl;
 }
 
 void writeCktInfo(){
@@ -190,6 +191,7 @@ void writeCktInfo(){
 		exit(1); 
 	}
 
+	newFile << "-----------------------------------------------------" << endl;
 	//Print details to file
 	for (auto node: nodes) {
 		if (node.second.isIn){
@@ -249,7 +251,7 @@ void writeCktInfo(){
 			newFile << endl;
 		}
 	}
-	newFile << endl << endl;
+	newFile << "-----------------------------------------------------" << endl;
 }
 
 void LUT::assignarrays(string NLDM_file){
