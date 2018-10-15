@@ -1,2 +1,2 @@
 # EE 5301 VLSI Automation
-Repo for VLSI course machine problems.
+Repo for VLSI course mini projects.
