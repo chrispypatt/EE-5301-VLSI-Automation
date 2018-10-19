@@ -12,37 +12,47 @@ void readLine_ckt(string fileLine,int i);
 void writeCktInfo();
 void writeLUTInfo(char *arg);
 
-void forwardTraverse();
+double forwardTraverse();
+void findSlack(double required_time);
 
 
 
 class node {
 	public:
     string name, outname, type; //name indicates cell type (nand, nor etc.), outname denotes the output wire name
-    double Cload; //load cap of this node           
+    double Cload;//load cap of this node
+	double slack,cell_delay; //values for back traversal
+	double required_input_time; //Time input nodes must report to this node by           
     map<string,node*> inputs; //fanin nodes of this node 
 	map<string,node*> outputs; //fanout nodes of this node
-	bool isOut,isIn, outputReady;
+	bool is_out,is_in, output_ready;
     vector<double> Tau_in; //vector of input slews (for all inputs to the gate), to be used for STA
     vector<double> inp_arrival; //vector of input arrival times for input transitions (ignore rise or fall)
     vector<double> outp_arrival; //vector of output arrival times, outp_arrival= inp_arrival + cell_delay; cell_delay will be calculated from NLDM
 	vector<double> tau_outs; //vector of Taus,tau will be calculated from NLDM
     double max_out_arrival; //arrival time at the output of this gate using max on (inp_arrival + cell_delay)
-    double Tau_out; //Resulting output slew
+	double Tau_out; 
+	int in_degree;//keep track of STA dependencies
+	int out_degree; //keep track of STA dependencies
 	node() {
 		name = "";
 		type = ""; 
-		isOut = false;
-		isIn = false;
-		outputReady = false;
+		in_degree = 0;
+		out_degree = 0;
+		is_out = false;
+		is_in = false;
+		output_ready = false;
 	};
 	node(string n, string ty, bool out, bool in) {
 		name = n;
 		type = ty; 
-		isOut = out;
-		isIn = in;
-		outputReady = false;
+		is_out = out;
+		is_in = in;
+		in_degree = 0;
+		out_degree = 0;
+		output_ready = false;
 		Cload = 0;
+		slack = -1;
 	}
 };
 
@@ -64,6 +74,8 @@ vector<double> calculateOutArrivals(node* thisnode);
 vector<double> calculateOutTaus(node* thisnode);
 double getCell(node* thisnode,int i, int type);
 string getLUTKey(node* thisnode);
+vector<node*> findCritPath();
+
 
 
 
