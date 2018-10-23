@@ -80,12 +80,11 @@ double forwardTraverse(){
 		if (thisnode->in_degree == 0){//not waiting on anyone
 			if (thisnode->is_in){
 				thisnode->inp_arrival.push_back(0.0);//node arrival time is 0
-				thisnode->cell_delay = 0;
 				thisnode->Tau_in.push_back(0.002); // slew is 2.0ps
 				for (auto output: thisnode->outputs){
 					thisnode->Cload += lut.Cap_in[getLUTKey(output.second)]; //Calculate Cload for LUT lookup
 				}
-				thisnode->outp_arrival["x"] = (0.0);
+				thisnode->outp_arrival.push_back(0.0);
 				thisnode->tau_outs.push_back(0.002);
 			}else{
 				for (auto input: thisnode->inputs){//get input values
@@ -104,12 +103,8 @@ double forwardTraverse(){
 			}
 			//We have Cload now and input slew now get arrival times
 			double max_out = 0;
-			for (auto outArr: thisnode->outp_arrival){
-				if(outArr.second > max_out){
-					max_out = outArr.second;
-				}
-			}
-			thisnode->max_out_arrival = max_out;
+
+			thisnode->max_out_arrival = *max_element(thisnode->outp_arrival.begin(),thisnode->outp_arrival.end());
 			thisnode->Tau_out = *max_element(thisnode->tau_outs.begin(),thisnode->tau_outs.end());
 			if (thisnode->is_out && thisnode->max_out_arrival*1000 > circuit_delay){
 				// cout << thisnode->name << " : " <<  thisnode->max_out_arrival*1000 << endl;
@@ -140,8 +135,9 @@ void findSlack(double required_time){
 			if (!thisnode->is_out){
 				//This nodes required arrival is the min of all output required times
 				for(auto out: thisnode->outputs){//get earliest required time of outputs
-					if (out.second->required_input_time <= required){
-						required = out.second->required_input_time - getCell(out.second,thisnode->Tau_out,0)*1000;
+					double temp =  out.second->required_input_time - out.second->cell_delays[thisnode->name];
+					if (temp <= required){
+						required = temp;
 					}
 				}
 			}else{
@@ -182,8 +178,8 @@ vector<node*> findCritPath(){
 	return path;
 }
 
-map<string,double> calculateOutArrivals(node* thisnode){//calculate outp_arrival vector
-	map<string,double> out;
+vector<double> calculateOutArrivals(node* thisnode){//calculate outp_arrival vector
+	vector<double>  out;
 	double max_arrival = 0;
 	double num_inputs = 1;
 	if (!thisnode->is_in){
@@ -197,11 +193,8 @@ map<string,double> calculateOutArrivals(node* thisnode){//calculate outp_arrival
 	for (auto input: thisnode->inputs){ 
 		double cellDelay = multiplier*getCell(thisnode, input.second->Tau_out, 0);
 		double arrival = thisnode->inp_arrival[i] + cellDelay;
-		if ( arrival > max_arrival){
-			thisnode->cell_delay = cellDelay;
-			max_arrival = arrival;
-		}
-		out[input.second->name]=(thisnode->inp_arrival[i] + cellDelay);
+		thisnode->cell_delays[input.second->name] = cellDelay*1000;
+		out.push_back(thisnode->inp_arrival[i] + cellDelay);
 		i++;
 	}
 	return out;
@@ -242,9 +235,9 @@ double getCell(node* thisnode,double tau_in, int type){//type: 0=delay, 1=slew
 
 	//get table indicies
 	if (tau_in > TauVals[TauVals.size()-1]){
-		j = 1;
+		j = TauVals.size()-1;
 	}else if(tau_in < TauVals[0]){
-		j=TauVals.size()-1;
+		j = 1;
 	}else{
 		for(j = 0; j < TauVals.size(); j++){
 			//τ1 ≤ τ < τ2 
@@ -254,9 +247,9 @@ double getCell(node* thisnode,double tau_in, int type){//type: 0=delay, 1=slew
 		}
 	}
 	if (cload > CloadVals[CloadVals.size()-1]){
-		k = 1;
+		k = CloadVals.size()-1;
 	}else if(cload < CloadVals[0]){
-		k=CloadVals.size()-1;
+		k = 1;
 	}else{
 		for(k = 0; k < CloadVals.size(); k++){
 			//  C1 ≤ C < C2
@@ -394,6 +387,7 @@ void readLine_ckt(string fileLine,int i){
 		case 1: //INPUT NODE
 			key = fileLine.substr(first+1,last-first-1); //get n#
 			nodes[key] = new node("INP-"+key, "INP", false, true); 
+			nodes_queue.push(nodes[key]);
 			break;
 		case 2:
 			key = fileLine.substr(first+1,last-first-1); //get n#
@@ -406,6 +400,7 @@ void readLine_ckt(string fileLine,int i){
 				nodes[key]->type = type;
 				nodes[key]->is_out = true;
 			}
+			nodes_queue.push(nodes[key]);
 			break;
 		default:
 			vector <string> fields,gate,fanInKeys;
@@ -437,6 +432,7 @@ void readLine_ckt(string fileLine,int i){
 				nodes[inkey]->outputs[key] = nodes[key];
 				nodes[inkey]->out_degree++;
 			} 
+			nodes_queue.push(nodes[key]);
 	}
 }
 
@@ -595,8 +591,20 @@ void writeSTA(double circuit_delay, vector<node*> critpath){
 
 	newFile << "Gate slacks: " << endl;
 
-	for (auto node: nodes){
-		newFile << node.second->name << ": " << node.second->slack << " ps" << endl;
+	// for (auto node: nodes){
+	// 	newFile << node.second->name << ": " << node.second->slack << " ps" << endl;
+	// }
+	while(!nodes_queue.empty()){
+		node* node = nodes_queue.front();
+		nodes_queue.pop();
+		if (node->is_out){
+			newFile << "OUTPUT-" << split(node->name,"-")[1] <<": ";
+			node->is_out = false; //don't need this after, set to false so we can print the gate later too
+		}else{
+			newFile << node->name << ": ";
+		}
+		newFile << node->slack << " ps" << endl;
+
 	}
 
 	newFile << endl << "Critical path: " << endl;

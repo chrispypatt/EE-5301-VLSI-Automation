@@ -5,27 +5,21 @@
 #include <string>
 #include <vector> 
 #include <list> 
-
-
-
-
-
-
+#include <queue>
 
 class node {
 	public:
     string name, outname, type; //name indicates cell type (nand, nor etc.), outname denotes the output wire name
     double Cload;//load cap of this node
-	double slack,cell_delay; //values for back traversal
+	double slack;//values for back traversal
+	map<string,double> cell_delays; 
 	double required_input_time; //Time input nodes must report to this node by           
     map<string,node*> inputs; //fanin nodes of this node 
 	map<string,node*> outputs; //fanout nodes of this node
 	bool is_out,is_in, output_ready;
     vector<double> Tau_in; //vector of input slews (for all inputs to the gate), to be used for STA
     vector<double> inp_arrival; //vector of input arrival times for input transitions (ignore rise or fall)
-	
-	map<string,double> outp_arrival; //vector of output arrival times, outp_arrival= inp_arrival + cell_delay; cell_delay will be calculated from NLDM
-
+	vector<double> outp_arrival; //vector of output arrival times, outp_arrival= inp_arrival + cell_delay; cell_delay will be calculated from NLDM
 	vector<double> tau_outs; //vector of Taus,tau will be calculated from NLDM
     double max_out_arrival; //arrival time at the output of this gate using max on (inp_arrival + cell_delay)
 	double Tau_out; 
@@ -66,8 +60,9 @@ class LUT {
 
 LUT lut;
 map <string,node*> nodes;
+queue<node*> nodes_queue;
 
-map<string,double> calculateOutArrivals(node* thisnode);
+vector<double> calculateOutArrivals(node* thisnode);
 
 vector<double> calculateOutTaus(node* thisnode);
 double getCell(node* thisnode,double tau_in, int type);
