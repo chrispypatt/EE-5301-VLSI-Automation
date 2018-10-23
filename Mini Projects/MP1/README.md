@@ -22,7 +22,7 @@ Directory Organization:
 
 ## Description
 
-###Phase 1
+### Phase 1
 The first phase of this project was approached using string comparisons to loop through each line of an input file and get either nldm or circuit information based on user input. Implementation relied heavily on the C++ STL using vectors and maps to keep track and associate data with each other. 
 
 To compile and run this parser program, begin with the the command 'make'
@@ -31,7 +31,7 @@ To parse a file, you can run one of two commands:
 	* argument={“delays”, “slews”} to either delay or slew info
 * `./parser read_ckt benchmark_file.bench` to parse the benchmark file specified and writes the output to 'ckt_details.txt'
 
-###Phase 2
+### Phase 2
 The second phase of this project's goal was to traverse throught the circuit provided through a user's input and print out the full circuit delay along with gate slacks and the circuit's critical path (based on output required arrival times equal to 1.1x the circuit delay). This was done using three traversals of the circuit: 
 1. Forward topological traversal to calculate the maximum gate arrival times (actual arrival), output slews and total circuit delay. 
 2. Backward topological traversal to calculate the required arrival time (based on total  required time 1.1x actual circuit delay) of each gate and the slack (required arrival - actual arrival). 
