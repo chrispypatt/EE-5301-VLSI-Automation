@@ -5,6 +5,8 @@
 #include <map> 
 #include <iterator> 
 #include <algorithm>
+#include <cstring>
+
 
 
 using namespace std;
@@ -45,29 +47,8 @@ int main(int argc, char *argv[]){
 		required_time = circuit_delay * 1.1;
 		findSlack(required_time);
 		vector<node*> critpath = findCritPath();
-		//Print it all out
-		cout << "-----------------------------------------------------" << endl;
-
-		cout << "Circuit delay: " << circuit_delay << " ps" << endl << endl;
-
-		cout << "Gate slacks: " << endl;
-
-		for (auto node: nodes){
-			cout << node.second->name << ": " << node.second->slack << " ps" << endl;
-		}
-
-		cout << endl << "Critical path: " << endl;
-
-		for (int i = critpath.size()-1; i >=0 ; i--){
-			if(i>0){
-				cout << critpath[i]->name << ","; 
-			}else{
-				cout << critpath[i]->name << "," << "OUTPUT-" << split(critpath[i]->name,"-")[1] << endl; 
-			}
-		} 
-
-		cout << endl <<"-----------------------------------------------------" << endl;
-
+		writeSTA(circuit_delay, critpath);
+		cout << "Circuit has been parsed and traversed. Details can be found in 'ckt_traversal.txt'" << endl;
 
 	}else{
 		cerr << endl;
@@ -99,11 +80,12 @@ double forwardTraverse(){
 		if (thisnode->in_degree == 0){//not waiting on anyone
 			if (thisnode->is_in){
 				thisnode->inp_arrival.push_back(0.0);//node arrival time is 0
+				thisnode->cell_delay = 0;
 				thisnode->Tau_in.push_back(0.002); // slew is 2.0ps
 				for (auto output: thisnode->outputs){
-					thisnode->Cload += lut.Cap_in[getLUTKey(thisnode)]; //Calculate Cload for LUT lookup
+					thisnode->Cload += lut.Cap_in[getLUTKey(output.second)]; //Calculate Cload for LUT lookup
 				}
-				thisnode->outp_arrival.push_back(0.0);
+				thisnode->outp_arrival["x"] = (0.0);
 				thisnode->tau_outs.push_back(0.002);
 			}else{
 				for (auto input: thisnode->inputs){//get input values
@@ -121,7 +103,13 @@ double forwardTraverse(){
 				thisnode->tau_outs = calculateOutTaus(thisnode);
 			}
 			//We have Cload now and input slew now get arrival times
-			thisnode->max_out_arrival = *max_element(thisnode->outp_arrival.begin(), thisnode->outp_arrival.end());
+			double max_out = 0;
+			for (auto outArr: thisnode->outp_arrival){
+				if(outArr.second > max_out){
+					max_out = outArr.second;
+				}
+			}
+			thisnode->max_out_arrival = max_out;
 			thisnode->Tau_out = *max_element(thisnode->tau_outs.begin(),thisnode->tau_outs.end());
 			if (thisnode->is_out && thisnode->max_out_arrival*1000 > circuit_delay){
 				// cout << thisnode->name << " : " <<  thisnode->max_out_arrival*1000 << endl;
@@ -145,23 +133,22 @@ void findSlack(double required_time){
 		node_queue.push(thisnode.second);
 	}
 	while(!node_queue.empty()){
+		double required = required_time;
 		node* thisnode = node_queue.front();
 		node_queue.pop();
 		if (thisnode->out_degree == 0){//not waiting on anyone
-			double required = required_time;
 			if (!thisnode->is_out){
 				//This nodes required arrival is the min of all output required times
 				for(auto out: thisnode->outputs){//get earliest required time of outputs
-					if (out.second->required_input_time < required){
-						required = out.second->required_input_time;
+					if (out.second->required_input_time <= required){
+						required = out.second->required_input_time - getCell(out.second,thisnode->Tau_out,0)*1000;
 					}
 				}
+			}else{
+				required = required_time;
 			}
 			thisnode->slack = required - thisnode->max_out_arrival*1000;
-			thisnode->required_input_time = required - thisnode->cell_delay*1000;
-			// cout << thisnode->name << " : " << "req= " << required << " - " << thisnode->cell_delay*1000 << " = " << thisnode->required_input_time << endl;
-
-			// cout << thisnode->name << " : " << "slack= " << required << " - " << thisnode->max_out_arrival*1000 << " = " << thisnode->slack << endl;
+			thisnode->required_input_time = required;
 			for(auto in: thisnode->inputs){//update input outdegrees
 				in.second->out_degree--;
 			}
@@ -195,8 +182,8 @@ vector<node*> findCritPath(){
 	return path;
 }
 
-vector<double> calculateOutArrivals(node* thisnode){//calculate outp_arrival vector
-	vector<double> out;
+map<string,double> calculateOutArrivals(node* thisnode){//calculate outp_arrival vector
+	map<string,double> out;
 	double max_arrival = 0;
 	double num_inputs = 1;
 	if (!thisnode->is_in){
@@ -206,16 +193,16 @@ vector<double> calculateOutArrivals(node* thisnode){//calculate outp_arrival vec
 	if (num_inputs > 1.0){//If its a 2 or more input gate, multiply Tau by n/2
 		double multiplier = num_inputs/2;
 	}
-	
-	for (int i = 0; i < num_inputs; i++){ 
-		double cellDelay = multiplier*getCell(thisnode, i, 0);
-		double arrival = thisnode->inp_arrival[i]+ cellDelay;
+	int i = 0;
+	for (auto input: thisnode->inputs){ 
+		double cellDelay = multiplier*getCell(thisnode, input.second->Tau_out, 0);
+		double arrival = thisnode->inp_arrival[i] + cellDelay;
 		if ( arrival > max_arrival){
 			thisnode->cell_delay = cellDelay;
 			max_arrival = arrival;
 		}
-		// cout << thisnode->name << " : "<< (thisnode->inp_arrival[i]+ cellDelay)*1000 << endl;
-		out.push_back(thisnode->inp_arrival[i]+ cellDelay);
+		out[input.second->name]=(thisnode->inp_arrival[i] + cellDelay);
+		i++;
 	}
 	return out;
 } 
@@ -230,16 +217,15 @@ vector<double> calculateOutTaus(node* thisnode){//calculate out Taus vector
 	if (num_inputs > 1.0){//If its a 2 or more input gate, multiply Tau by n/2
 		double multiplier = num_inputs/2;
 	}
-	for (int i = 0; i < num_inputs; i++){ 
-		double Tau = multiplier*getCell(thisnode, i, 1);
+	for (auto input: thisnode->inputs){ 
+		double Tau = multiplier*getCell(thisnode, input.second->Tau_out, 1);
 		out.push_back(Tau);
 	}
 	return out;
 } 
 
-double getCell(node* thisnode,int i, int type){//type: 0=delay, 1=slew
+double getCell(node* thisnode,double tau_in, int type){//type: 0=delay, 1=slew
 	vector<vector<double>> table;
-	double tau_in = thisnode->Tau_in[i];//i = index of tau_in
 	double cload = thisnode->Cload;
 	double t_1, t_2, c_1, c_2,v11,v12,v21,v22;
 	double out;
@@ -251,12 +237,8 @@ double getCell(node* thisnode,int i, int type){//type: 0=delay, 1=slew
 	}else{
 		table = lut.All_slews[key];
 	}
-
 	vector<double> TauVals = lut.Tau_in_vals[key];
 	vector<double> CloadVals = lut.Cload_vals[key];
-
-	// cout << thisnode->name << " : " << tau_in << " : " << cload << endl;
-
 
 	//get table indicies
 	if (tau_in > TauVals[TauVals.size()-1]){
@@ -598,6 +580,36 @@ void writeCktInfo(){
 		}
 	}
 	newFile << "-----------------------------------------------------" << endl;
+}
+
+void writeSTA(double circuit_delay, vector<node*> critpath){
+	//Print it all out
+	ofstream newFile("ckt_traversal.txt");
+	if(!newFile.is_open()){
+		newFile << "Unable to open or create output file" << endl;
+		exit(1); 
+	}
+	newFile << "-----------------------------------------------------" << endl;
+
+	newFile << "Circuit delay: " << circuit_delay << " ps" << endl << endl;
+
+	newFile << "Gate slacks: " << endl;
+
+	for (auto node: nodes){
+		newFile << node.second->name << ": " << node.second->slack << " ps" << endl;
+	}
+
+	newFile << endl << "Critical path: " << endl;
+
+	for (int i = critpath.size()-1; i >=0 ; i--){
+		if(i>0){
+			newFile << critpath[i]->name << ","; 
+		}else{
+			newFile << critpath[i]->name << "," << "OUTPUT-" << split(critpath[i]->name,"-")[1] << endl; 
+		}
+	} 
+
+	newFile << endl <<"-----------------------------------------------------" << endl;
 }
 
 /*//////////////////////END PRINT OUT////////////////////////////////////////////*/

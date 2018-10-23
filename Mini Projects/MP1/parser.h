@@ -7,13 +7,8 @@
 #include <list> 
 
 
-void createnodes(string bench_file);
-void readLine_ckt(string fileLine,int i);
-void writeCktInfo();
-void writeLUTInfo(char *arg);
 
-double forwardTraverse();
-void findSlack(double required_time);
+
 
 
 
@@ -28,7 +23,9 @@ class node {
 	bool is_out,is_in, output_ready;
     vector<double> Tau_in; //vector of input slews (for all inputs to the gate), to be used for STA
     vector<double> inp_arrival; //vector of input arrival times for input transitions (ignore rise or fall)
-    vector<double> outp_arrival; //vector of output arrival times, outp_arrival= inp_arrival + cell_delay; cell_delay will be calculated from NLDM
+	
+	map<string,double> outp_arrival; //vector of output arrival times, outp_arrival= inp_arrival + cell_delay; cell_delay will be calculated from NLDM
+
 	vector<double> tau_outs; //vector of Taus,tau will be calculated from NLDM
     double max_out_arrival; //arrival time at the output of this gate using max on (inp_arrival + cell_delay)
 	double Tau_out; 
@@ -70,11 +67,21 @@ class LUT {
 LUT lut;
 map <string,node*> nodes;
 
-vector<double> calculateOutArrivals(node* thisnode);
+map<string,double> calculateOutArrivals(node* thisnode);
+
 vector<double> calculateOutTaus(node* thisnode);
-double getCell(node* thisnode,int i, int type);
+double getCell(node* thisnode,double tau_in, int type);
 string getLUTKey(node* thisnode);
 vector<node*> findCritPath();
+
+void createnodes(string bench_file);
+void readLine_ckt(string fileLine,int i);
+void writeCktInfo();
+void writeLUTInfo(char *arg);
+void writeSTA(double circuit_delay, vector<node*> critpath);
+
+double forwardTraverse();
+void findSlack(double required_time);
 
 
 
