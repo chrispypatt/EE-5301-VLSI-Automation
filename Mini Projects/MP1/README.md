@@ -17,7 +17,7 @@ The second phase of this project's goal was to traverse throught the circuit pro
 2. Backward topological traversal to calculate the required arrival time (based on total  required time 1.1x actual circuit delay) of each gate and the slack (required arrival - actual arrival). 
 3. Backwards greedy traversal to select a minimum slack output gate and subsequently the minimum slack input to each gate chose from there until it finds an input gate. My algorithm just selects a random gate if slacks are the same for a given level.  
 
-All the vital information found through these traversals are output to 'ckt_traversal.txt'. The program can be run using the command: `./parser  benchmark_file.bench`
+All the vital information found through these traversals are output to 'ckt_traversal.txt'. The program can be run using the command: `./parser  <benchmark_file>`
 
 
 
