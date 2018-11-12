@@ -1,0 +1,28 @@
+-------------------Chip Info----------------------
+
+Chip area: 25
+Chip dimensions: 5x5
+Total HPWL: 34
+
+-------------------Chip Layout----------------------
+
+------ Row 0 : width 4 ------
+| NAND-10 | NAND-11 | 
+
+
+------ Row 1 : width 4 ------
+| NAND-16 | NAND-19 | 
+
+
+------ Row 2 : width 4 ------
+| NAND-22 | NAND-23 | 
+
+
+------ Row 3 : width 4 ------
+| INP-1 | INP-2 | INP-3 | INP-6 | 
+
+
+------ Row 4 : width 3 ------
+| INP-7 | OUTP-22 | OUTP-23 | 
+
+-----------------------------------------------------

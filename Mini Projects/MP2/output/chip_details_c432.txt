@@ -1,0 +1,96 @@
+-------------------Chip Info----------------------
+
+Chip area: 484
+Chip dimensions: 22x22
+Total HPWL: 3242.5
+
+-------------------Chip Layout----------------------
+
+------ Row 0 : width 22 ------
+| NOT-118 | NOT-119 | NOT-122 | NOT-123 | NOT-126 | NOT-127 | NOT-130 | NOT-131 | NOT-134 | NOT-135 | NOT-138 | NOT-139 | NOT-142 | NOT-143 | NOT-146 | NOT-147 | NOT-150 | NOT-151 | NAND-154 | NOT-203 | OUTP-329 | 
+
+
+------ Row 1 : width 22 ------
+| NOR-157 | NOR-158 | NAND-159 | NAND-162 | NAND-165 | NAND-168 | NAND-171 | NAND-174 | NAND-177 | NOT-213 | OUTP-370 | 
+
+
+------ Row 2 : width 22 ------
+| NAND-180 | NOR-183 | NOR-184 | NOR-185 | NOR-186 | NOR-187 | NOR-188 | NOT-223 | OUTP-421 | 
+
+
+------ Row 3 : width 22 ------
+| NOR-189 | NOR-190 | NOR-191 | NOR-192 | NOR-193 | NOR-194 | NOR-195 | OUTP-430 | 
+
+
+------ Row 4 : width 22 ------
+| NOR-196 | NOR-197 | NOR-198 | XOR-224 | XOR-227 | NAND-242 | OUTP-431 | 
+
+
+------ Row 5 : width 21.5 ------
+| AND-199 | XOR-230 | NAND-246 | NOT-300 | 
+
+
+------ Row 6 : width 22 ------
+| XOR-233 | XOR-236 | XOR-239 | XOR-243 | NOT-301 | OUTP-432 | 
+
+
+------ Row 7 : width 21 ------
+| XOR-247 | NAND-250 | XOR-251 | NAND-254 | NAND-255 | NAND-256 | NAND-257 | NOT-302 | 
+
+
+------ Row 8 : width 21 ------
+| NAND-258 | NAND-259 | NAND-260 | NAND-263 | NAND-264 | NAND-267 | NAND-270 | NAND-273 | NAND-276 | NAND-279 | NOT-303 | 
+
+
+------ Row 9 : width 21 ------
+| NAND-282 | NAND-285 | NAND-288 | NAND-289 | NAND-290 | NAND-291 | NAND-292 | NAND-293 | NAND-294 | NAND-295 | NOT-304 | 
+
+
+------ Row 10 : width 21.5 ------
+| AND-296 | NOT-305 | NOT-306 | NOT-307 | NOT-308 | NOT-309 | NOT-319 | NOT-329 | NOT-360 | 
+
+
+------ Row 11 : width 21 ------
+| XOR-330 | XOR-331 | XOR-332 | XOR-333 | NOT-370 | 
+
+
+------ Row 12 : width 21 ------
+| NAND-334 | XOR-335 | NAND-336 | XOR-337 | NAND-338 | XOR-339 | 
+
+
+------ Row 13 : width 21 ------
+| NAND-340 | XOR-341 | NAND-342 | XOR-343 | NAND-344 | NAND-345 | NAND-346 | NOT-415 | 
+
+
+------ Row 14 : width 21 ------
+| NAND-347 | NAND-348 | NAND-349 | NAND-350 | NAND-351 | NAND-352 | NAND-353 | NAND-354 | NAND-355 | NAND-356 | NOT-417 | 
+
+
+------ Row 15 : width 21.5 ------
+| AND-357 | NAND-371 | NAND-372 | NAND-373 | NAND-374 | 
+
+
+------ Row 16 : width 21 ------
+| NAND-375 | NAND-376 | NAND-377 | NAND-378 | NAND-379 | NAND-380 | NAND-381 | NOT-418 | NOT-419 | NOT-420 | 
+
+
+------ Row 17 : width 21 ------
+| NAND-386 | NAND-393 | NAND-399 | NAND-404 | NAND-407 | INP-1 | 
+
+
+------ Row 18 : width 21 ------
+| NAND-411 | NAND-414 | AND-416 | INP-102 | 
+
+
+------ Row 19 : width 21 ------
+| NOR-421 | NAND-422 | NAND-425 | NAND-428 | NAND-429 | NAND-430 | INP-105 | 
+
+
+------ Row 20 : width 21 ------
+| NAND-431 | NAND-432 | INP-108 | INP-11 | INP-112 | INP-115 | INP-14 | INP-17 | INP-21 | INP-24 | INP-27 | INP-30 | INP-34 | INP-37 | INP-4 | 
+
+
+------ Row 21 : width 21 ------
+| INP-40 | INP-43 | INP-47 | INP-50 | INP-53 | INP-56 | INP-60 | INP-63 | INP-66 | INP-69 | INP-73 | INP-76 | INP-79 | INP-8 | INP-82 | INP-86 | INP-89 | INP-92 | INP-95 | INP-99 | OUTP-223 | 
+
+-----------------------------------------------------

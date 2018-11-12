@@ -1,0 +1,128 @@
+-------------------Chip Info----------------------
+
+Chip area: 900
+Chip dimensions: 30x30
+Total HPWL: 5718
+
+-------------------Chip Layout----------------------
+
+------ Row 0 : width 30 ------
+| XOR-250 | XOR-251 | XOR-252 | XOR-253 | XOR-254 | AND-266 | NOT-554 | OUTP-751 | 
+
+
+------ Row 1 : width 30 ------
+| XOR-255 | XOR-256 | XOR-257 | XOR-258 | XOR-259 | AND-267 | NOT-555 | OUTP-752 | 
+
+
+------ Row 2 : width 30 ------
+| XOR-260 | XOR-261 | XOR-262 | XOR-263 | XOR-264 | AND-268 | NOT-556 | OUTP-753 | 
+
+
+------ Row 3 : width 30 ------
+| XOR-265 | AND-269 | AND-270 | AND-271 | AND-272 | AND-273 | XOR-274 | NOT-557 | NOT-558 | NOT-559 | NOT-560 | OUTP-754 | 
+
+
+------ Row 4 : width 30 ------
+| XOR-275 | XOR-276 | XOR-277 | XOR-278 | XOR-279 | NOT-561 | NOT-562 | NOT-563 | NOT-564 | OUTP-755 | 
+
+
+------ Row 5 : width 29 ------
+| XOR-280 | XOR-281 | XOR-282 | XOR-283 | XOR-284 | NOT-565 | NOT-566 | NOT-567 | NOT-568 | 
+
+
+------ Row 6 : width 29 ------
+| XOR-285 | XOR-286 | XOR-287 | XOR-288 | XOR-289 | NOT-569 | NOT-570 | NOT-571 | NOT-572 | 
+
+
+------ Row 7 : width 29 ------
+| XOR-290 | XOR-293 | XOR-296 | XOR-299 | XOR-302 | NOT-573 | NOT-574 | NOT-575 | NOT-576 | 
+
+
+------ Row 8 : width 29 ------
+| XOR-305 | XOR-308 | XOR-311 | XOR-314 | XOR-315 | NOT-577 | NOT-578 | NOT-579 | NOT-580 | 
+
+
+------ Row 9 : width 29 ------
+| XOR-316 | XOR-317 | XOR-318 | XOR-319 | XOR-320 | NOT-581 | NOT-582 | NOT-583 | NOT-584 | 
+
+
+------ Row 10 : width 29 ------
+| XOR-321 | XOR-338 | XOR-339 | XOR-340 | XOR-341 | NOT-585 | NOT-586 | NOT-587 | NOT-588 | 
+
+
+------ Row 11 : width 29 ------
+| XOR-342 | XOR-343 | XOR-344 | XOR-345 | XOR-346 | NOT-589 | NOT-590 | NOT-591 | NOT-592 | 
+
+
+------ Row 12 : width 29 ------
+| XOR-347 | XOR-348 | XOR-349 | XOR-350 | XOR-351 | NOT-593 | AND-692 | 
+
+
+------ Row 13 : width 29 ------
+| XOR-352 | XOR-353 | XOR-354 | XOR-367 | XOR-380 | AND-693 | INP-1 | 
+
+
+------ Row 14 : width 29 ------
+| XOR-393 | XOR-406 | XOR-419 | XOR-432 | XOR-445 | AND-694 | INP-101 | 
+
+
+------ Row 15 : width 29 ------
+| AND-594 | AND-595 | AND-596 | AND-597 | AND-695 | INP-105 | INP-109 | 
+
+
+------ Row 16 : width 29 ------
+| AND-598 | AND-599 | AND-600 | AND-601 | AND-696 | INP-113 | INP-117 | 
+
+
+------ Row 17 : width 29.5 ------
+| OR-602 | OR-607 | AND-620 | AND-697 | AND-698 | 
+
+
+------ Row 18 : width 29.5 ------
+| AND-625 | AND-630 | AND-635 | AND-699 | AND-700 | INP-121 | 
+
+
+------ Row 19 : width 29.5 ------
+| AND-640 | AND-645 | AND-650 | AND-701 | AND-702 | INP-125 | 
+
+
+------ Row 20 : width 29.5 ------
+| AND-655 | AND-703 | AND-704 | AND-705 | AND-706 | AND-707 | AND-708 | AND-709 | INP-129 | 
+
+
+------ Row 21 : width 29 ------
+| AND-710 | AND-711 | AND-712 | AND-713 | AND-714 | AND-715 | AND-716 | AND-717 | AND-718 | INP-13 | INP-130 | 
+
+
+------ Row 22 : width 29 ------
+| AND-719 | AND-720 | AND-721 | AND-722 | AND-723 | XOR-724 | XOR-725 | INP-131 | INP-132 | INP-133 | INP-134 | 
+
+
+------ Row 23 : width 29 ------
+| XOR-726 | XOR-727 | XOR-728 | XOR-729 | XOR-730 | INP-135 | INP-136 | INP-137 | INP-17 | 
+
+
+------ Row 24 : width 29 ------
+| XOR-731 | XOR-732 | XOR-733 | XOR-734 | XOR-735 | INP-21 | INP-25 | INP-29 | INP-33 | 
+
+
+------ Row 25 : width 29 ------
+| XOR-736 | XOR-737 | XOR-738 | XOR-739 | XOR-740 | INP-37 | INP-41 | INP-45 | INP-49 | 
+
+
+------ Row 26 : width 29 ------
+| XOR-741 | XOR-742 | XOR-743 | XOR-744 | XOR-745 | INP-5 | INP-53 | INP-57 | INP-61 | 
+
+
+------ Row 27 : width 29 ------
+| XOR-746 | XOR-747 | XOR-748 | XOR-749 | XOR-750 | INP-65 | INP-69 | INP-73 | INP-77 | 
+
+
+------ Row 28 : width 29 ------
+| XOR-751 | XOR-752 | XOR-753 | XOR-754 | XOR-755 | INP-81 | INP-85 | INP-89 | INP-9 | 
+
+
+------ Row 29 : width 29 ------
+| INP-93 | INP-97 | OUTP-724 | OUTP-725 | OUTP-726 | OUTP-727 | OUTP-728 | OUTP-729 | OUTP-730 | OUTP-731 | OUTP-732 | OUTP-733 | OUTP-734 | OUTP-735 | OUTP-736 | OUTP-737 | OUTP-738 | OUTP-739 | OUTP-740 | OUTP-741 | OUTP-742 | OUTP-743 | OUTP-744 | OUTP-745 | OUTP-746 | OUTP-747 | OUTP-748 | OUTP-749 | OUTP-750 | 
+
+-----------------------------------------------------
