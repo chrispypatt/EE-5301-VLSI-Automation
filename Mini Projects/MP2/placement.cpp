@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <cstdlib>
 #include <iostream> 
 #include <string>
 #include <queue> 
@@ -26,8 +27,19 @@ int main(int argc, char *argv[]){
 		circuit.parseNetlist(file_name);
 		cout << "Placing gates on chip" << "." << "." << "." << endl;
 		chip.init_chip(circuit);
-		chip.calculate_wire_lengths();
-		// chip.print_chip(file_name);
+
+		//perturb a chip to see if it messes anything up
+		Chip chip2 = chip;
+		node* n1 = chip2.chip_layout.rows[1].gate_popback();
+		node* n2 = chip2.chip_layout.rows[2].gate_popback();
+		chip2.chip_layout.rows[1].gate_pushback(n2,1);
+		chip2.chip_layout.rows[2].gate_pushback(n1,2);
+
+
+
+		chip.chip_layout.calculate_wire_lengths();
+		chip2.chip_layout.calculate_wire_lengths();
+
 		chip.write_chip(file_name);
 		cout << "-----------------------------------------------------" << endl;
     }else{
@@ -41,12 +53,15 @@ int main(int argc, char *argv[]){
 }
 
 void Chip::init_chip(Circuit ckt){
-	//Make a square for our chip of size sqrt(gate_area_totals)xsqrt(gate_area_totals)
-	width = ceil(sqrt(ckt.total_gates_area));
-	height = width;
+	circuit = ckt; //save input circuit in our chip for future reference
 
-	//set up our gate data structure. Array of linked lists.
-	layout = new layout_row[(int)height];
+	NUM_MOVES_PER_STEP = ckt.nodes_queue.size(); //Do # gates amount of moves per temp step
+
+	//Make our layout grid
+	double total_area = ckt.total_gates_area;
+	double width = ceil(sqrt(total_area));
+	double height = ceil(total_area/width);
+	chip_layout.init_size(height,width);
 
 	//fill layout with our gates
 	for (auto elem: ckt.nodes) {
@@ -55,31 +70,31 @@ void Chip::init_chip(Circuit ckt){
 
 		//TODO: Faster way of initialization placeing
 		//Keep track of row with least width in case node cant fit in any row.
-		double min_width = width*width;
+		double min_width = chip_layout.width*width;
 		int min_row;
 		//place in next open spot of layout
-		for (int i=0; i<height; i++){
-			if ((layout[i].curr_width + n->width) < width){
-				layout[i].gate_pushback(n,(double)i);
+		for (int i=0; i<chip_layout.height; i++){
+			if ((chip_layout.rows[i].curr_width + n->width) < chip_layout.width){
+				chip_layout.rows[i].gate_pushback(n,(double)i);
 				placed = true;
 				break;
 			}
-			if (layout[i].curr_width < min_width){
-				min_width = layout[i].curr_width;
+			if (chip_layout.rows[i].curr_width < min_width){
+				min_width = chip_layout.rows[i].curr_width;
 				min_row = i;
 			}
 		}
 		if (!placed){//no more room on chip. We will create an almost square of nodes
 			//put this poor orphan in the shortest row
-			layout[min_row].gate_pushback(n,(double)min_row);
+			chip_layout.rows[min_row].gate_pushback(n,(double)min_row);
 		}
 	} 
 }
 
-void Chip::calculate_wire_lengths(){
+void Chip_Layout::calculate_wire_lengths(){
 	total_HPWL = 0;
 	for (int i=0; i<height; i++){
-		deque<node*> row = layout[i].row;
+		deque<node*> row = rows[i].row;
 		while(!row.empty()){
 			node *gate = row.front();
 			row.pop_front();
@@ -90,24 +105,67 @@ void Chip::calculate_wire_lengths(){
 	}
 }
 
+void Chip::simulated_annealing(){
+	//Initital solution is layout
+	struct Chip_Layout curr_sol, next_sol;
+	double T = T_O;
+	curr_sol = chip_layout;
+	double delta_cost;
+	while (T > T_FREEZE){
+		for (int i = 0; i < NUM_MOVES_PER_STEP; i++){
+			next_sol = perturb(curr_sol);
+			delta_cost = next_sol.get_cost() - curr_sol.get_cost();
+			if (accept_move(delta_cost, T)){
+				curr_sol = next_sol;
+			}
+		}
+		T = T/10;
+	}
+	chip_layout = curr_sol;
+	cout << chip_layout.total_HPWL << endl;
+}
+
+
+void Chip::perturb(Chip_Layout curr_sol){
+	//make changes, store previous state
+	Chip_Layout new_sol = curr_sol;
+	//perturb here
+	return new_sol;
+}
+
+
+
+
+bool Chip::accept_move(double delta_cost, double temp){
+	if (delta_cost < 0) { return true; }//we'd be crazy 🤪 not to accept this!!
+	//if change in cost is not negative, use Boltzman probability to decide to accept
+	double boltz = exp((-1)*(delta_cost/(K*temp)));
+	double r = (double)rand()/RAND_MAX; //# between 0 and 1
+	//accept or reject
+	if (r < boltz) { 
+		return true;
+	}
+	return false;
+}
+
 void Chip::destroy_chip(){
-	width = 0;
-	height = 0;
-	delete [] layout;
-	layout = nullptr;
+	chip_layout.width = 0;
+	chip_layout.height = 0;
+	delete [] chip_layout.rows;
+	chip_layout.rows = nullptr;
 }
 
 void Chip::print_chip(){
 	cout << "-------------------Chip Info----------------------" << endl;
-	cout << endl << "Chip area: " << width*height << endl;
-	cout << "Chip dimensions: " << width << "x" << height << endl;
-	cout << "Total HPWL: " << total_HPWL << endl << endl;
+	cout << endl << "Chip area: " << chip_layout.width*chip_layout.height << endl;
+	cout << "Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl;
+	cout << "Total HPWL: " << chip_layout.total_HPWL << endl << endl;
 	cout << "-------------------Chip Layout----------------------" << endl;
 	//print out chip for checking
-	for (int i=0; i<height; i++){
-		deque<node*> row = layout[i].row;
+	for (int i=0; i<chip_layout.height; i++){
+		deque<node*> row = chip_layout.rows[i].row;
 		cout << endl << "------" << " Row " << i << " : width ";
-		cout << layout[i].curr_width << " ------" << endl << "| ";
+		cout << chip_layout.rows[i].curr_width << " ------" << endl << "| ";
 		while(!row.empty()){
 			node *temp = row.front();
 			row.pop_front();
@@ -131,19 +189,19 @@ void Chip::write_chip(string in_file){
 		exit(1); 
 	}else{//write out to both terminal and output file
 		newFile << "-------------------Chip Info----------------------" << endl;
-		newFile << endl << "Chip area: " << width*height << endl;
-		newFile << "Chip dimensions: " << width << "x" << height << endl;
-		newFile << "Total HPWL: " << total_HPWL << endl << endl;
+		newFile << endl << "Chip area: " << chip_layout.width*chip_layout.height << endl;
+		newFile << "Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl;
+		newFile << "Total HPWL: " << chip_layout.total_HPWL << endl << endl;
 		newFile << "-------------------Chip Layout----------------------" << endl;
 		//print out chip for checking
-		for (int i=0; i<height; i++){
-			deque<node*> row = layout[i].row;
+		for (int i=0; i<chip_layout.height; i++){
+			deque<node*> row = chip_layout.rows[i].row;
 			newFile << endl << "------" << " Row " << i << " : width ";
-			newFile << layout[i].curr_width << " ------" << endl << "| ";
+			newFile << chip_layout.rows[i].curr_width << " ------" << endl << "| ";
 			while(!row.empty()){
 				node *temp = row.front();
 				row.pop_front();
-				newFile << temp->name << " | ";
+				newFile << temp->name << " x:y " << temp->left_x << ":" << temp->y << " | ";
 			}
 			newFile << endl << endl;
 		}

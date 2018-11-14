@@ -2,127 +2,127 @@
 
 Chip area: 900
 Chip dimensions: 30x30
-Total HPWL: 5718
+Total HPWL: 5719
 
 -------------------Chip Layout----------------------
 
 ------ Row 0 : width 30 ------
-| XOR-250 | XOR-251 | XOR-252 | XOR-253 | XOR-254 | AND-266 | NOT-554 | OUTP-751 | 
+| XOR-250 x:y 0:0 | XOR-251 x:y 5:0 | XOR-252 x:y 10:0 | XOR-253 x:y 15:0 | XOR-254 x:y 20:0 | AND-266 x:y 25:0 | NOT-554 x:y 28:0 | OUTP-751 x:y 29:0 | 
 
 
------- Row 1 : width 30 ------
-| XOR-255 | XOR-256 | XOR-257 | XOR-258 | XOR-259 | AND-267 | NOT-555 | OUTP-752 | 
+------ Row 1 : width 31 ------
+| XOR-255 x:y 0:1 | XOR-256 x:y 5:1 | XOR-257 x:y 10:1 | XOR-258 x:y 15:1 | XOR-259 x:y 20:1 | AND-267 x:y 25:1 | NOT-555 x:y 28:1 | OUTP-753 x:y 29:1 | OUTP-752 x:y 30:2 | 
 
 
------- Row 2 : width 30 ------
-| XOR-260 | XOR-261 | XOR-262 | XOR-263 | XOR-264 | AND-268 | NOT-556 | OUTP-753 | 
+------ Row 2 : width 29 ------
+| XOR-260 x:y 0:2 | XOR-261 x:y 5:2 | XOR-262 x:y 10:2 | XOR-263 x:y 15:2 | XOR-264 x:y 20:2 | AND-268 x:y 25:2 | NOT-556 x:y 28:2 | 
 
 
 ------ Row 3 : width 30 ------
-| XOR-265 | AND-269 | AND-270 | AND-271 | AND-272 | AND-273 | XOR-274 | NOT-557 | NOT-558 | NOT-559 | NOT-560 | OUTP-754 | 
+| XOR-265 x:y 0:3 | AND-269 x:y 5:3 | AND-270 x:y 8:3 | AND-271 x:y 11:3 | AND-272 x:y 14:3 | AND-273 x:y 17:3 | XOR-274 x:y 20:3 | NOT-557 x:y 25:3 | NOT-558 x:y 26:3 | NOT-559 x:y 27:3 | NOT-560 x:y 28:3 | OUTP-754 x:y 29:3 | 
 
 
 ------ Row 4 : width 30 ------
-| XOR-275 | XOR-276 | XOR-277 | XOR-278 | XOR-279 | NOT-561 | NOT-562 | NOT-563 | NOT-564 | OUTP-755 | 
+| XOR-275 x:y 0:4 | XOR-276 x:y 5:4 | XOR-277 x:y 10:4 | XOR-278 x:y 15:4 | XOR-279 x:y 20:4 | NOT-561 x:y 25:4 | NOT-562 x:y 26:4 | NOT-563 x:y 27:4 | NOT-564 x:y 28:4 | OUTP-755 x:y 29:4 | 
 
 
 ------ Row 5 : width 29 ------
-| XOR-280 | XOR-281 | XOR-282 | XOR-283 | XOR-284 | NOT-565 | NOT-566 | NOT-567 | NOT-568 | 
+| XOR-280 x:y 0:5 | XOR-281 x:y 5:5 | XOR-282 x:y 10:5 | XOR-283 x:y 15:5 | XOR-284 x:y 20:5 | NOT-565 x:y 25:5 | NOT-566 x:y 26:5 | NOT-567 x:y 27:5 | NOT-568 x:y 28:5 | 
 
 
 ------ Row 6 : width 29 ------
-| XOR-285 | XOR-286 | XOR-287 | XOR-288 | XOR-289 | NOT-569 | NOT-570 | NOT-571 | NOT-572 | 
+| XOR-285 x:y 0:6 | XOR-286 x:y 5:6 | XOR-287 x:y 10:6 | XOR-288 x:y 15:6 | XOR-289 x:y 20:6 | NOT-569 x:y 25:6 | NOT-570 x:y 26:6 | NOT-571 x:y 27:6 | NOT-572 x:y 28:6 | 
 
 
 ------ Row 7 : width 29 ------
-| XOR-290 | XOR-293 | XOR-296 | XOR-299 | XOR-302 | NOT-573 | NOT-574 | NOT-575 | NOT-576 | 
+| XOR-290 x:y 0:7 | XOR-293 x:y 5:7 | XOR-296 x:y 10:7 | XOR-299 x:y 15:7 | XOR-302 x:y 20:7 | NOT-573 x:y 25:7 | NOT-574 x:y 26:7 | NOT-575 x:y 27:7 | NOT-576 x:y 28:7 | 
 
 
 ------ Row 8 : width 29 ------
-| XOR-305 | XOR-308 | XOR-311 | XOR-314 | XOR-315 | NOT-577 | NOT-578 | NOT-579 | NOT-580 | 
+| XOR-305 x:y 0:8 | XOR-308 x:y 5:8 | XOR-311 x:y 10:8 | XOR-314 x:y 15:8 | XOR-315 x:y 20:8 | NOT-577 x:y 25:8 | NOT-578 x:y 26:8 | NOT-579 x:y 27:8 | NOT-580 x:y 28:8 | 
 
 
 ------ Row 9 : width 29 ------
-| XOR-316 | XOR-317 | XOR-318 | XOR-319 | XOR-320 | NOT-581 | NOT-582 | NOT-583 | NOT-584 | 
+| XOR-316 x:y 0:9 | XOR-317 x:y 5:9 | XOR-318 x:y 10:9 | XOR-319 x:y 15:9 | XOR-320 x:y 20:9 | NOT-581 x:y 25:9 | NOT-582 x:y 26:9 | NOT-583 x:y 27:9 | NOT-584 x:y 28:9 | 
 
 
 ------ Row 10 : width 29 ------
-| XOR-321 | XOR-338 | XOR-339 | XOR-340 | XOR-341 | NOT-585 | NOT-586 | NOT-587 | NOT-588 | 
+| XOR-321 x:y 0:10 | XOR-338 x:y 5:10 | XOR-339 x:y 10:10 | XOR-340 x:y 15:10 | XOR-341 x:y 20:10 | NOT-585 x:y 25:10 | NOT-586 x:y 26:10 | NOT-587 x:y 27:10 | NOT-588 x:y 28:10 | 
 
 
 ------ Row 11 : width 29 ------
-| XOR-342 | XOR-343 | XOR-344 | XOR-345 | XOR-346 | NOT-589 | NOT-590 | NOT-591 | NOT-592 | 
+| XOR-342 x:y 0:11 | XOR-343 x:y 5:11 | XOR-344 x:y 10:11 | XOR-345 x:y 15:11 | XOR-346 x:y 20:11 | NOT-589 x:y 25:11 | NOT-590 x:y 26:11 | NOT-591 x:y 27:11 | NOT-592 x:y 28:11 | 
 
 
 ------ Row 12 : width 29 ------
-| XOR-347 | XOR-348 | XOR-349 | XOR-350 | XOR-351 | NOT-593 | AND-692 | 
+| XOR-347 x:y 0:12 | XOR-348 x:y 5:12 | XOR-349 x:y 10:12 | XOR-350 x:y 15:12 | XOR-351 x:y 20:12 | NOT-593 x:y 25:12 | AND-692 x:y 26:12 | 
 
 
 ------ Row 13 : width 29 ------
-| XOR-352 | XOR-353 | XOR-354 | XOR-367 | XOR-380 | AND-693 | INP-1 | 
+| XOR-352 x:y 0:13 | XOR-353 x:y 5:13 | XOR-354 x:y 10:13 | XOR-367 x:y 15:13 | XOR-380 x:y 20:13 | AND-693 x:y 25:13 | INP-1 x:y 28:13 | 
 
 
 ------ Row 14 : width 29 ------
-| XOR-393 | XOR-406 | XOR-419 | XOR-432 | XOR-445 | AND-694 | INP-101 | 
+| XOR-393 x:y 0:14 | XOR-406 x:y 5:14 | XOR-419 x:y 10:14 | XOR-432 x:y 15:14 | XOR-445 x:y 20:14 | AND-694 x:y 25:14 | INP-101 x:y 28:14 | 
 
 
 ------ Row 15 : width 29 ------
-| AND-594 | AND-595 | AND-596 | AND-597 | AND-695 | INP-105 | INP-109 | 
+| AND-594 x:y 0:15 | AND-595 x:y 6:15 | AND-596 x:y 12:15 | AND-597 x:y 18:15 | AND-695 x:y 24:15 | INP-105 x:y 27:15 | INP-109 x:y 28:15 | 
 
 
 ------ Row 16 : width 29 ------
-| AND-598 | AND-599 | AND-600 | AND-601 | AND-696 | INP-113 | INP-117 | 
+| AND-598 x:y 0:16 | AND-599 x:y 6:16 | AND-600 x:y 12:16 | AND-601 x:y 18:16 | AND-696 x:y 24:16 | INP-113 x:y 27:16 | INP-117 x:y 28:16 | 
 
 
 ------ Row 17 : width 29.5 ------
-| OR-602 | OR-607 | AND-620 | AND-697 | AND-698 | 
+| OR-602 x:y 0:17 | OR-607 x:y 8:17 | AND-620 x:y 16:17 | AND-697 x:y 23.5:17 | AND-698 x:y 26.5:17 | 
 
 
 ------ Row 18 : width 29.5 ------
-| AND-625 | AND-630 | AND-635 | AND-699 | AND-700 | INP-121 | 
+| AND-625 x:y 0:18 | AND-630 x:y 7.5:18 | AND-635 x:y 15:18 | AND-699 x:y 22.5:18 | AND-700 x:y 25.5:18 | INP-121 x:y 28.5:18 | 
 
 
 ------ Row 19 : width 29.5 ------
-| AND-640 | AND-645 | AND-650 | AND-701 | AND-702 | INP-125 | 
+| AND-640 x:y 0:19 | AND-645 x:y 7.5:19 | AND-650 x:y 15:19 | AND-701 x:y 22.5:19 | AND-702 x:y 25.5:19 | INP-125 x:y 28.5:19 | 
 
 
 ------ Row 20 : width 29.5 ------
-| AND-655 | AND-703 | AND-704 | AND-705 | AND-706 | AND-707 | AND-708 | AND-709 | INP-129 | 
+| AND-655 x:y 0:20 | AND-703 x:y 7.5:20 | AND-704 x:y 10.5:20 | AND-705 x:y 13.5:20 | AND-706 x:y 16.5:20 | AND-707 x:y 19.5:20 | AND-708 x:y 22.5:20 | AND-709 x:y 25.5:20 | INP-129 x:y 28.5:20 | 
 
 
 ------ Row 21 : width 29 ------
-| AND-710 | AND-711 | AND-712 | AND-713 | AND-714 | AND-715 | AND-716 | AND-717 | AND-718 | INP-13 | INP-130 | 
+| AND-710 x:y 0:21 | AND-711 x:y 3:21 | AND-712 x:y 6:21 | AND-713 x:y 9:21 | AND-714 x:y 12:21 | AND-715 x:y 15:21 | AND-716 x:y 18:21 | AND-717 x:y 21:21 | AND-718 x:y 24:21 | INP-13 x:y 27:21 | INP-130 x:y 28:21 | 
 
 
 ------ Row 22 : width 29 ------
-| AND-719 | AND-720 | AND-721 | AND-722 | AND-723 | XOR-724 | XOR-725 | INP-131 | INP-132 | INP-133 | INP-134 | 
+| AND-719 x:y 0:22 | AND-720 x:y 3:22 | AND-721 x:y 6:22 | AND-722 x:y 9:22 | AND-723 x:y 12:22 | XOR-724 x:y 15:22 | XOR-725 x:y 20:22 | INP-131 x:y 25:22 | INP-132 x:y 26:22 | INP-133 x:y 27:22 | INP-134 x:y 28:22 | 
 
 
 ------ Row 23 : width 29 ------
-| XOR-726 | XOR-727 | XOR-728 | XOR-729 | XOR-730 | INP-135 | INP-136 | INP-137 | INP-17 | 
+| XOR-726 x:y 0:23 | XOR-727 x:y 5:23 | XOR-728 x:y 10:23 | XOR-729 x:y 15:23 | XOR-730 x:y 20:23 | INP-135 x:y 25:23 | INP-136 x:y 26:23 | INP-137 x:y 27:23 | INP-17 x:y 28:23 | 
 
 
 ------ Row 24 : width 29 ------
-| XOR-731 | XOR-732 | XOR-733 | XOR-734 | XOR-735 | INP-21 | INP-25 | INP-29 | INP-33 | 
+| XOR-731 x:y 0:24 | XOR-732 x:y 5:24 | XOR-733 x:y 10:24 | XOR-734 x:y 15:24 | XOR-735 x:y 20:24 | INP-21 x:y 25:24 | INP-25 x:y 26:24 | INP-29 x:y 27:24 | INP-33 x:y 28:24 | 
 
 
 ------ Row 25 : width 29 ------
-| XOR-736 | XOR-737 | XOR-738 | XOR-739 | XOR-740 | INP-37 | INP-41 | INP-45 | INP-49 | 
+| XOR-736 x:y 0:25 | XOR-737 x:y 5:25 | XOR-738 x:y 10:25 | XOR-739 x:y 15:25 | XOR-740 x:y 20:25 | INP-37 x:y 25:25 | INP-41 x:y 26:25 | INP-45 x:y 27:25 | INP-49 x:y 28:25 | 
 
 
 ------ Row 26 : width 29 ------
-| XOR-741 | XOR-742 | XOR-743 | XOR-744 | XOR-745 | INP-5 | INP-53 | INP-57 | INP-61 | 
+| XOR-741 x:y 0:26 | XOR-742 x:y 5:26 | XOR-743 x:y 10:26 | XOR-744 x:y 15:26 | XOR-745 x:y 20:26 | INP-5 x:y 25:26 | INP-53 x:y 26:26 | INP-57 x:y 27:26 | INP-61 x:y 28:26 | 
 
 
 ------ Row 27 : width 29 ------
-| XOR-746 | XOR-747 | XOR-748 | XOR-749 | XOR-750 | INP-65 | INP-69 | INP-73 | INP-77 | 
+| XOR-746 x:y 0:27 | XOR-747 x:y 5:27 | XOR-748 x:y 10:27 | XOR-749 x:y 15:27 | XOR-750 x:y 20:27 | INP-65 x:y 25:27 | INP-69 x:y 26:27 | INP-73 x:y 27:27 | INP-77 x:y 28:27 | 
 
 
 ------ Row 28 : width 29 ------
-| XOR-751 | XOR-752 | XOR-753 | XOR-754 | XOR-755 | INP-81 | INP-85 | INP-89 | INP-9 | 
+| XOR-751 x:y 0:28 | XOR-752 x:y 5:28 | XOR-753 x:y 10:28 | XOR-754 x:y 15:28 | XOR-755 x:y 20:28 | INP-81 x:y 25:28 | INP-85 x:y 26:28 | INP-89 x:y 27:28 | INP-9 x:y 28:28 | 
 
 
 ------ Row 29 : width 29 ------
-| INP-93 | INP-97 | OUTP-724 | OUTP-725 | OUTP-726 | OUTP-727 | OUTP-728 | OUTP-729 | OUTP-730 | OUTP-731 | OUTP-732 | OUTP-733 | OUTP-734 | OUTP-735 | OUTP-736 | OUTP-737 | OUTP-738 | OUTP-739 | OUTP-740 | OUTP-741 | OUTP-742 | OUTP-743 | OUTP-744 | OUTP-745 | OUTP-746 | OUTP-747 | OUTP-748 | OUTP-749 | OUTP-750 | 
+| INP-93 x:y 0:29 | INP-97 x:y 1:29 | OUTP-724 x:y 2:29 | OUTP-725 x:y 3:29 | OUTP-726 x:y 4:29 | OUTP-727 x:y 5:29 | OUTP-728 x:y 6:29 | OUTP-729 x:y 7:29 | OUTP-730 x:y 8:29 | OUTP-731 x:y 9:29 | OUTP-732 x:y 10:29 | OUTP-733 x:y 11:29 | OUTP-734 x:y 12:29 | OUTP-735 x:y 13:29 | OUTP-736 x:y 14:29 | OUTP-737 x:y 15:29 | OUTP-738 x:y 16:29 | OUTP-739 x:y 17:29 | OUTP-740 x:y 18:29 | OUTP-741 x:y 19:29 | OUTP-742 x:y 20:29 | OUTP-743 x:y 21:29 | OUTP-744 x:y 22:29 | OUTP-745 x:y 23:29 | OUTP-746 x:y 24:29 | OUTP-747 x:y 25:29 | OUTP-748 x:y 26:29 | OUTP-749 x:y 27:29 | OUTP-750 x:y 28:29 | 
 
 -----------------------------------------------------
