@@ -1,0 +1,41 @@
+-------------------Chip Info----------------------
+
+Bounding Chip area: 20
+Bounding Chip dimensions: 5x4
+
+
+Actual Chip area: 20
+Actual Chip dimensions: 5x4
+
+Initial HPWL: 38
+After Annealing HPWL: 22
+Annealing Execution Time: 0.238245s
+
+-------------------Gate Info----------------------
+INP-1: x=0, y=2
+INP-2: x=1, y=2
+INP-3: x=0, y=0
+INP-6: x=1, y=0
+INP-7: x=2, y=0
+OUTP-22: x=2, y=2
+OUTP-23: x=2, y=1
+NAND-10: x=0, y=3
+NAND-11: x=0, y=1
+NAND-16: x=3, y=2
+NAND-19: x=3, y=0
+NAND-22: x=2, y=3
+NAND-23: x=3, y=1
+-------------------Chip Layout----------------------
+
+------ Row 0 : width 5 ------
+| INP-3 | INP-6 | INP-7 | NAND-19 | 
+
+------ Row 1 : width 5 ------
+| NAND-11 | OUTP-23 | NAND-23 | 
+
+------ Row 2 : width 5 ------
+| INP-1 | INP-2 | OUTP-22 | NAND-16 | 
+
+------ Row 3 : width 4 ------
+| NAND-10 | NAND-22 | 
+-----------------------------------------------------

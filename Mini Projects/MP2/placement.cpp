@@ -44,7 +44,6 @@ int main(int argc, char *argv[]){
 		end = clock(); 
 		auto duration = ((float)end-(float)start)/CLOCKS_PER_SEC; 
 
-		// double seconds = (double)duration.count()/1000000;
 
 		chip.write_chip(file_name, duration);
 		cout << "-----------------------------------------------------" << endl;
@@ -154,7 +153,7 @@ void Chip::simulated_annealing(string in_file){
 	while (T > T_FREEZE && zero_moves_count < 10){//allow for faster termination if consectively stagnent
 		count++;
 		int moves = 0;
-		printProgress((double)count/207.0); //peace of mind to user. not always accurate
+		printProgress((double)count/167.0); //peace of mind to user. not always accurate
 		for (int i = 0; i < NUM_MOVES_PER_STEP; i++){
 			struct Chip_Layout next_sol = perturb(&curr_sol);
 			delta_cost = next_sol.get_cost(T) - curr_sol.get_cost(T);
@@ -241,7 +240,7 @@ void Chip::destroy_chip(){
 /*																				  */
 /*////////////////////////////////////////////////////////////////////////////////*/
 
-void Chip::print_chip(){
+void Chip::print_chip(double seconds){
 	cout << "-------------------Chip Info----------------------" << endl;
 	cout << endl << "Bounding Chip area: " << chip_layout.width*chip_layout.height << endl;
 	cout << "Bounding Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl << endl;
@@ -251,7 +250,7 @@ void Chip::print_chip(){
 	cout << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
 	cout << "Annealing Execution Time: " << seconds << "s" << endl << endl;
 	cout << "-------------------Gate Info----------------------" << endl;
-	cout <node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
+	queue<node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
 	while (!temp_queue.empty()){
 		node *n = temp_queue.front();
 		cout << n->name << ": ";

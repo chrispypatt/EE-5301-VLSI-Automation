@@ -85,7 +85,7 @@ class Chip {
 
 	void init_chip(Circuit circuit);
 	void destroy_chip();
-	void print_chip();
+	void print_chip(double seconds);
 	void write_chip(string in_file, double seconds);
 
 	//functions for annealing
