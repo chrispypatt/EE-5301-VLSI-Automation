@@ -4,9 +4,14 @@
 #include <string>
 #include <queue> 
 #include <map> 
+#include <vector>
 #include <limits>
 #include <sys/stat.h> 
 #include <sys/types.h> 
+#include <random>
+#include <algorithm>
+#include <chrono> 
+
 
 using namespace std;
 
@@ -14,33 +19,32 @@ using namespace std;
 #include "placement.h"
 #include "helpers.h"
 
+
 int main(int argc, char *argv[]){
 	Circuit circuit;
 	Chip chip;
+
+	mkdir("output", 0777);
     //argc is number of args
     //argv is array of pointers to arguments
 	if(argc == 2){
         //read_ckt
 		string file_name = argv[1];
 		cout << "-----------------------------------------------------" << endl;
-		cout << endl << "Parsing file: " << file_name << endl;
 		circuit.parseNetlist(file_name);
-		cout << "Placing gates on chip" << "." << "." << "." << endl;
+
+		//timer for initial placing and annealing
+		auto start = std::chrono::high_resolution_clock::now(); 
+
 		chip.init_chip(circuit);
+		chip.simulated_annealing(file_name);
 
-		//perturb a chip to see if it messes anything up
-		Chip chip2 = chip;
-		node* n1 = chip2.chip_layout.rows[1].gate_popback();
-		node* n2 = chip2.chip_layout.rows[2].gate_popback();
-		chip2.chip_layout.rows[1].gate_pushback(n2,1);
-		chip2.chip_layout.rows[2].gate_pushback(n1,2);
+		auto end = std::chrono::high_resolution_clock::now(); 
+		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start); 
 
+		double seconds = (double)duration.count()/1000000;
 
-
-		chip.chip_layout.calculate_wire_lengths();
-		chip2.chip_layout.calculate_wire_lengths();
-
-		chip.write_chip(file_name);
+		chip.write_chip(file_name, seconds);
 		cout << "-----------------------------------------------------" << endl;
     }else{
 		cerr << endl;
@@ -53,6 +57,7 @@ int main(int argc, char *argv[]){
 }
 
 void Chip::init_chip(Circuit ckt){
+	cout << "Placing gates on chip" << "." << "." << "." << endl;
 	circuit = ckt; //save input circuit in our chip for future reference
 
 	NUM_MOVES_PER_STEP = ckt.nodes_queue.size(); //Do # gates amount of moves per temp step
@@ -61,11 +66,19 @@ void Chip::init_chip(Circuit ckt){
 	double total_area = ckt.total_gates_area;
 	double width = ceil(sqrt(total_area));
 	double height = ceil(total_area/width);
-	chip_layout.init_size(height,width);
+	chip_layout = Chip_Layout(height,width);
 
-	//fill layout with our gates
+	vector<node*> nodes_r;
 	for (auto elem: ckt.nodes) {
 		node *n = elem.second;
+		nodes_r.push_back(n);
+	}
+	default_random_engine  rng(time(NULL));
+	shuffle(begin(nodes_r), std::end(nodes_r), rng);
+
+	//fill layout randomly  with our gates
+	while(!nodes_r.empty()){
+		node *n = nodes_r.back();
 		bool placed = false;
 
 		//TODO: Faster way of initialization placeing
@@ -75,7 +88,7 @@ void Chip::init_chip(Circuit ckt){
 		//place in next open spot of layout
 		for (int i=0; i<chip_layout.height; i++){
 			if ((chip_layout.rows[i].curr_width + n->width) < chip_layout.width){
-				chip_layout.rows[i].gate_pushback(n,(double)i);
+				chip_layout.rows[i].gate_pushback(*n,(double)i);
 				placed = true;
 				break;
 			}
@@ -86,57 +99,120 @@ void Chip::init_chip(Circuit ckt){
 		}
 		if (!placed){//no more room on chip. We will create an almost square of nodes
 			//put this poor orphan in the shortest row
-			chip_layout.rows[min_row].gate_pushback(n,(double)min_row);
+			chip_layout.rows[min_row].gate_pushback(*n,(double)min_row);
 		}
+		nodes_r.pop_back();
 	} 
+	chip_layout.calculate_wire_lengths();
 }
 
 void Chip_Layout::calculate_wire_lengths(){
 	total_HPWL = 0;
+	actual_width = 0;
 	for (int i=0; i<height; i++){
-		deque<node*> row = rows[i].row;
+		deque<node> row = rows[i].row;
+		if (rows[i].curr_width > actual_width){
+			actual_width = rows[i].curr_width;
+		}
 		while(!row.empty()){
-			node *gate = row.front();
+			node gate = row.front();
 			row.pop_front();
 			//look at all outputs of this node. 
-			gate->wire_length = gate->calculate_wire_length();
-			total_HPWL += gate->wire_length;
+			// gate.wire_length
+			gate_coordinates[gate.key].wire_length = calculate_wire_length(gate);
+			total_HPWL += gate_coordinates[gate.key].wire_length ;
 		}
 	}
 }
 
-void Chip::simulated_annealing(){
+void Chip::simulated_annealing(string in_file){
+	string output_file;
+	size_t found = in_file.find_last_of("/\\");
+	output_file = split(in_file.substr(found+1), "."  )[0];
+	ofstream newFile("output/intermediate_details_" + output_file + ".txt");
+
 	//Initital solution is layout
 	struct Chip_Layout curr_sol, next_sol;
-	double T = T_O;
-	curr_sol = chip_layout;
 	double delta_cost;
-	while (T > T_FREEZE){
+	int count = 0, zero_moves_count = 0;
+
+	double cool_down_factor = 0.95;//T_O*.01;
+	double T = T_O;
+
+	//determine k
+	double area = chip_layout.total_HPWL;
+	int power = 0;
+	while (area > 100){
+		area /=10.0;
+		power += 1;
+	}
+
+	double K = 0.001 * pow(10,power);
+
+	curr_sol = chip_layout;
+
+	cout << "Conducting Simulated Annealing" << "." << "." << "." << endl << endl;
+	newFile <<"Iteration"<<"\t"  <<"HPWL" <<"\t"  <<"Cost"<< "\t" << "Moves" <<"\tT"<< endl;
+	newFile<<"START" <<"\t\t"<< curr_sol.total_HPWL<<"\t"<< curr_sol.get_cost(T) << "\t" << 0.0<<"\t" << T << endl;
+	
+	while (T > T_FREEZE && zero_moves_count < 10){//allow for faster termination if consectively stagnent
+		count++;
+		int moves = 0;
+		printProgress((double)count/207.0);
+		// cout << "..." << endl;
 		for (int i = 0; i < NUM_MOVES_PER_STEP; i++){
 			next_sol = perturb(curr_sol);
-			delta_cost = next_sol.get_cost() - curr_sol.get_cost();
-			if (accept_move(delta_cost, T)){
+			delta_cost = next_sol.get_cost(T) - curr_sol.get_cost(T);
+			if (accept_move(delta_cost, T, K)){
+				moves++;
 				curr_sol = next_sol;
 			}
+			
 		}
-		T = T/10;
+
+		if (moves < 1){ //count up zero move iterations
+			zero_moves_count++;
+		}else{
+			zero_moves_count = 0;
+		}
+
+		newFile<<count <<"\t\t"<< curr_sol.total_HPWL<<"\t"<< curr_sol.get_cost(T) << "\t" << moves<<"\t" << T << endl;
+		T *= cool_down_factor;
 	}
+	printProgress(1.0);
+	cout << endl;
 	chip_layout = curr_sol;
-	cout << chip_layout.total_HPWL << endl;
 }
 
 
-void Chip::perturb(Chip_Layout curr_sol){
-	//make changes, store previous state
+Chip_Layout Chip::perturb(Chip_Layout curr_sol){
 	Chip_Layout new_sol = curr_sol;
-	//perturb here
+	//get random grid poitns to swap
+	int i1 = random_int(0,(int)new_sol.height-1);
+	int j1 = random_int(0,new_sol.rows[i1].row.size()-1);
+	int i2 = random_int(0,(int)new_sol.height-1);
+	int j2 = random_int(0,new_sol.rows[i2].row.size()-1);
+
+	//swap gates
+	iter_swap(new_sol.rows[i1].row.begin() + j1, new_sol.rows[i2].row.begin() + j2);
+	//redo placement of those rows to update x and y values
+	struct layout_row temp;
+	for (int i = 0; i < new_sol.rows[i1].row.size(); i++){
+		temp.gate_pushback(new_sol.rows[i1].row[i],i1);
+	}
+	struct layout_row temp1;
+	for (int i = 0; i < new_sol.rows[i2].row.size(); i++){
+		temp1.gate_pushback(new_sol.rows[i2].row[i],i2);
+	}
+	new_sol.rows[i1] = temp;
+	new_sol.rows[i2] = temp1;
+
+	new_sol.calculate_wire_lengths();
 	return new_sol;
 }
 
 
-
-
-bool Chip::accept_move(double delta_cost, double temp){
+bool Chip::accept_move(double delta_cost, double temp, double K){
 	if (delta_cost < 0) { return true; }//we'd be crazy 🤪 not to accept this!!
 	//if change in cost is not negative, use Boltzman probability to decide to accept
 	double boltz = exp((-1)*(delta_cost/(K*temp)));
@@ -151,7 +227,7 @@ bool Chip::accept_move(double delta_cost, double temp){
 void Chip::destroy_chip(){
 	chip_layout.width = 0;
 	chip_layout.height = 0;
-	delete [] chip_layout.rows;
+	// delete [] chip_layout.rows;
 	chip_layout.rows = nullptr;
 }
 
@@ -163,50 +239,122 @@ void Chip::print_chip(){
 	cout << "-------------------Chip Layout----------------------" << endl;
 	//print out chip for checking
 	for (int i=0; i<chip_layout.height; i++){
-		deque<node*> row = chip_layout.rows[i].row;
+		deque<node> row = chip_layout.rows[i].row;
 		cout << endl << "------" << " Row " << i << " : width ";
 		cout << chip_layout.rows[i].curr_width << " ------" << endl << "| ";
 		while(!row.empty()){
-			node *temp = row.front();
+			node temp = row.front();
 			row.pop_front();
-			cout << temp->name << " | ";
+			cout << temp.name << " | ";
 		}
 		cout << endl << endl;
 	}
 	cout << "-----------------------------------------------------" << endl;
 }
 
-void Chip::write_chip(string in_file){
+void Chip::write_chip(string in_file, double seconds){
 	//create directory for output files
 	string output_file;
 	size_t found = in_file.find_last_of("/\\");
 	output_file = split(in_file.substr(found+1), "."  )[0];
 
-    mkdir("output", 0777);
 	ofstream newFile("output/chip_details_" + output_file + ".txt");
 	if(!newFile.is_open()){
 		cout << "Unable to open or create output file: " << "/output/chip_details_" << output_file << ".txt"<< endl;
 		exit(1); 
 	}else{//write out to both terminal and output file
 		newFile << "-------------------Chip Info----------------------" << endl;
-		newFile << endl << "Chip area: " << chip_layout.width*chip_layout.height << endl;
-		newFile << "Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl;
-		newFile << "Total HPWL: " << chip_layout.total_HPWL << endl << endl;
+		newFile << endl << "Bounding Chip area: " << chip_layout.width*chip_layout.height << endl;
+		newFile << "Bounding Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl << endl;
+		newFile << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
+		newFile << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
+		newFile << "Total HPWL: " << chip_layout.total_HPWL << endl;
+		newFile << "Annealing Execution Time: " << seconds << "s" << endl << endl;
 		newFile << "-------------------Chip Layout----------------------" << endl;
 		//print out chip for checking
 		for (int i=0; i<chip_layout.height; i++){
-			deque<node*> row = chip_layout.rows[i].row;
+			deque<node> row = chip_layout.rows[i].row;
 			newFile << endl << "------" << " Row " << i << " : width ";
 			newFile << chip_layout.rows[i].curr_width << " ------" << endl << "| ";
 			while(!row.empty()){
-				node *temp = row.front();
+				node temp = row.front();
 				row.pop_front();
-				newFile << temp->name << " x:y " << temp->left_x << ":" << temp->y << " | ";
+				newFile << temp.name << " | ";
 			}
-			newFile << endl << endl;
+			newFile << endl;
 		}
+		newFile << "-------------------Gate Info----------------------" << endl;
+		queue <node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
+		while (!temp_queue.empty()){
+			node *n = temp_queue.front();
+			newFile << n->name << ": ";
+			newFile << "x=" << gate_coordinates[n->key].left_x;
+			newFile << ", y=" << gate_coordinates[n->key].y;
+			newFile << endl;
+			temp_queue.pop();
+		} 
 		newFile << "-----------------------------------------------------" << endl;
 	}
-	cout << "Output has been generated and can be found at: " << "output/chip_details_" + output_file + ".txt" << endl << endl;
+	cout << endl << "Output has been generated and can be found at: " << endl;
+	cout << "output/chip_details_" + output_file + ".txt" << endl;
+	cout << "	&" << endl;
+	cout << "output/intermediate_details_" + output_file + ".txt" << endl << endl;
+
+}
+
+
+double Chip_Layout::calculate_wire_length(node n){
+	double length = 0;
+	struct Coordinates coord = gate_coordinates[n.key];
+
+	//set extreme values so we can compare to our net
+	double min_x = coord.left_x, min_y = coord.y;
+	double max_x = coord.left_x, max_y = coord.y;
+
+	//iterate through all output gates (net)
+	for (auto elem: n.outputs) {
+		double x = gate_coordinates[elem.second->key].left_x;
+		double y = gate_coordinates[elem.second->key].y;
+		if (x > max_x){
+			max_x = x;
+		}
+		if (x < min_x){
+			min_x = x;
+		}
+		if (y > max_y){
+			max_y = y;
+		}
+		if (y < min_y){
+			min_y = y;
+		} 
+	}
+	//we have max and mins, now calculate HPWL
+	//(2*length of rectangle + 2* height of rectangle)/2
+	//or length of rectangle + height of rectangle
+	length = (max_x-min_x)+(max_y-min_y);
+	// gate_coordinates[n.key].wire_length = length;
+	// cout << length << endl;
+	return length;
+}
+
+int random_int(int min, int max){
+	static bool first = true;
+	if (first) {  
+		srand(time(NULL)); //seeding for the first time only!
+		first = false;
+	}
+	return min + rand() % (( max + 1 ) - min);
+}
+
+
+
+
+//From razzak on https://stackoverflow.com/questions/14539867/how-to-display-a-progress-indicator-in-pure-c-c-cout-printf
+void printProgress (double percentage){
+    int val = (int) (percentage * 100);
+    int lpad = (int) (percentage * PBWIDTH);
+    int rpad = PBWIDTH - lpad;
+    printf ("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
+    fflush (stdout);
 }
 

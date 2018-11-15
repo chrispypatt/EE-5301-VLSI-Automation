@@ -15,8 +15,7 @@ class node {
 	int in_degree;//fanin count 
 	int out_degree; //fanout count
 	double height, width, area;
-	double left_x,right_x,y;//position of gate in a layout
-	double wire_length;
+
 
 	node(string nm, string k,string ty, bool out, bool in) {
 		name = nm;
@@ -36,7 +35,6 @@ class node {
 		area = w*h;
 	}
 
-	double calculate_wire_length();
 };
 
 class Circuit {

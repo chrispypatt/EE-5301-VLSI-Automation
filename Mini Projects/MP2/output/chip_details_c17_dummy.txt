@@ -2,27 +2,27 @@
 
 Chip area: 25
 Chip dimensions: 5x5
-Total HPWL: 44
+Total HPWL: 38
 
 -------------------Chip Layout----------------------
 
 ------ Row 0 : width 4 ------
-| INP-n1 x:y 0:0 | INP-n2 x:y 1:0 | INP-n3 x:y 2:0 | INP-n6 x:y 3:0 | 
+| INP-n1 | INP-n2 | INP-n3 | INP-n6 | 
 
 
------- Row 1 : width 8 ------
-| INP-n7 x:y 0:1 | OUTP-n22 x:y 1:1 | OUTP-n23 x:y 2:1 | NAND-n11 x:y 3:1 | NOR-n23 x:y 5:2 | 
+------ Row 1 : width 6 ------
+| INP-n7 | OUTP-n22 | OUTP-n23 | NOR-n23 | 
 
 
------- Row 2 : width 2 ------
-| NAND-n10 x:y 0:2 | 
+------ Row 2 : width 4 ------
+| NAND-n10 | NAND-n11 | 
 
 
 ------ Row 3 : width 4 ------
-| NAND-n16 x:y 0:3 | NAND-n22 x:y 2:3 | 
+| NAND-n16 | NAND-n22 | 
 
 
 ------ Row 4 : width 3 ------
-| NOR-n19 x:y 0:4 | 
+| NOR-n19 | 
 
 -----------------------------------------------------

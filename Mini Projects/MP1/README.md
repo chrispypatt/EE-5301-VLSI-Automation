@@ -19,10 +19,7 @@ The second phase of this project's goal was to traverse throught the circuit pro
 
 All the vital information found through these traversals are output to 'ckt_traversal.txt'. The program can be run using the command: `./parser  <benchmark_file>`
 
-
-
 ###Directory Organization:
-
 * README.md
 	- This project's readme.
 * Makefile

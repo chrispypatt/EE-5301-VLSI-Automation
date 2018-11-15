@@ -10,6 +10,7 @@ using namespace std;
 
 		
 void Circuit::parseNetlist(string file_name){
+	cout << endl << "Parsing file: " << file_name << endl;
 	string file_line;
 	ifstream inFile;
 
@@ -143,36 +144,6 @@ void Circuit::setGateWidths(){
 }
 
 
-double node::calculate_wire_length(){
-	double length = 0;
-	//set extreme values so we can compare to our net
-	double min_x = left_x, min_y = y;
-	double max_x = left_x, max_y = y;
-
-	//iterate through all output gates (net)
-	for (auto elem: outputs) {
-		double x = elem.second->left_x;
-		double y = elem.second->y;
-		if (x > max_x){
-			max_x = x;
-		}
-		if (x < min_x){
-			min_x = x;
-		}
-		if (y > max_y){
-			max_y = y;
-		}
-		if (y < min_y){
-			min_y = y;
-		} 
-	}
-	//we have max and mins, now calculate HPWL
-	//(2*length of rectangle + 2* height of rectangle)/2
-	//or length of rectangle + height of rectangle
-	length = (max_x-min_x)+(max_y-min_y);
-	// cout << length << endl;
-	return length;
-}
 
 
 /*//////////////////////END DATA STRUCTURE INIT//////////////////////////////////////*/
