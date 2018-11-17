@@ -47,9 +47,20 @@ int main(int argc, char *argv[]){
 
 		chip.write_chip(file_name, duration);
 		cout << "-----------------------------------------------------" << endl;
-    }else{
+    }else if (argc == 3 && (strcmp(argv[1],"init_test") == 0)){
+		string file_name = argv[2];
+		cout << "-----------------------------------------------------" << endl;
+		circuit.parseNetlist(file_name);
+
+		chip.init_chip(circuit);
+
+		chip.write_chip(file_name, -1);
+		cout << "-----------------------------------------------------" << endl;
+	}else{
 		cerr << endl;
 		cerr << "Usage: " << argv[0] << " <bench_file>" << endl;
+		cerr << "		" << "or" << endl;
+		cerr << "	" << argv[0] << " init_test  <bench_file>" << endl;
 		cerr << endl;
 		return 1;
 	}
@@ -244,11 +255,15 @@ void Chip::print_chip(double seconds){
 	cout << "-------------------Chip Info----------------------" << endl;
 	cout << endl << "Bounding Chip area: " << chip_layout.width*chip_layout.height << endl;
 	cout << "Bounding Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl << endl;
-	cout << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
-	cout << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
+	if (seconds > 0) {
+		cout << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
+		cout << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
+	}
 	cout << "Initial HPWL: " << chip_layout.starting_HPWL << endl;
-	cout << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
-	cout << "Annealing Execution Time: " << seconds << "s" << endl << endl;
+	if (seconds > 0) {
+		cout << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
+		cout << "Annealing Execution Time: " << seconds << "s" << endl << endl;
+	}
 	cout << "-------------------Gate Info----------------------" << endl;
 	queue<node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
 	while (!temp_queue.empty()){
@@ -289,11 +304,15 @@ void Chip::write_chip(string in_file, double seconds){
 		newFile << "-------------------Chip Info----------------------" << endl;
 		newFile << endl << "Bounding Chip area: " << chip_layout.width*chip_layout.height << endl;
 		newFile << "Bounding Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl << endl;
-		newFile << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
-		newFile << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
+		if (seconds > 0) {
+			newFile << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
+			newFile << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
+		}
 		newFile << "Initial HPWL: " << chip_layout.starting_HPWL << endl;
-		newFile << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
-		newFile << "Annealing Execution Time: " << seconds << "s" << endl << endl;
+		if (seconds > 0) {
+			newFile << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
+			newFile << "Annealing Execution Time: " << seconds << "s" << endl << endl;
+		}
 		newFile << "-------------------Gate Info----------------------" << endl;
 		queue <node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
 		while (!temp_queue.empty()){
@@ -321,8 +340,10 @@ void Chip::write_chip(string in_file, double seconds){
 	}
 	cout << endl << "Output has been generated and can be found at: " << endl;
 	cout << "output/chip_details_" + output_file + ".txt" << endl;
-	cout << "	&" << endl;
-	cout << "output/intermediate_details_" + output_file + ".txt" << endl << endl;
+	if (seconds > 0) {
+		cout << "	&" << endl;
+		cout << "output/intermediate_details_" + output_file + ".txt" << endl << endl;
+	}
 
 }
 

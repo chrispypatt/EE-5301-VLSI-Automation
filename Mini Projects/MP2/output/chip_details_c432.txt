@@ -1,0 +1,285 @@
+-------------------Chip Info----------------------
+
+Bounding Chip area: 484
+Bounding Chip dimensions: 22x22
+
+
+Actual Chip area: 517
+Actual Chip dimensions: 23.5x22
+
+Initial HPWL: 3783.5
+After Annealing HPWL: 1702
+Annealing Execution Time: 51.9436s
+
+-------------------Gate Info----------------------
+INP-1: x=0, y=16
+INP-4: x=6, y=19
+INP-8: x=5, y=20
+INP-11: x=9, y=9
+INP-14: x=0, y=14
+INP-17: x=8, y=0
+INP-21: x=7, y=4
+INP-24: x=4, y=9
+INP-27: x=11, y=5
+INP-30: x=1, y=14
+INP-34: x=2, y=7
+INP-37: x=0, y=0
+INP-40: x=2, y=6
+INP-43: x=3, y=6
+INP-47: x=6, y=8
+INP-50: x=6, y=14
+INP-53: x=2, y=5
+INP-56: x=22, y=11
+INP-60: x=17, y=1
+INP-63: x=12, y=17
+INP-66: x=22, y=5
+INP-69: x=16, y=21
+INP-73: x=15, y=21
+INP-76: x=7, y=13
+INP-79: x=14, y=17
+INP-82: x=20, y=12
+INP-86: x=16, y=14
+INP-89: x=0, y=18
+INP-92: x=20, y=0
+INP-95: x=2, y=18
+INP-99: x=22, y=4
+INP-102: x=10, y=15
+INP-105: x=9, y=4
+INP-108: x=10, y=21
+INP-112: x=15, y=17
+INP-115: x=12, y=19
+OUTP-223: x=13, y=17
+OUTP-329: x=6, y=4
+OUTP-370: x=5, y=9
+OUTP-421: x=2, y=15
+OUTP-430: x=3, y=0
+OUTP-431: x=9, y=0
+OUTP-432: x=10, y=9
+NOT-118: x=1, y=18
+NOT-119: x=5, y=19
+NOT-122: x=8, y=5
+NOT-123: x=11, y=1
+NOT-126: x=3, y=9
+NOT-127: x=0, y=12
+NOT-130: x=4, y=0
+NOT-131: x=4, y=6
+NOT-134: x=8, y=13
+NOT-135: x=12, y=14
+NOT-138: x=17, y=16
+NOT-139: x=17, y=19
+NOT-142: x=8, y=16
+NOT-143: x=9, y=13
+NOT-146: x=0, y=19
+NOT-147: x=8, y=4
+NOT-150: x=9, y=18
+NOT-151: x=10, y=18
+NAND-154: x=3, y=19
+NOR-157: x=6, y=20
+NOR-158: x=7, y=17
+NAND-159: x=12, y=5
+NAND-162: x=3, y=10
+NAND-165: x=5, y=0
+NAND-168: x=12, y=11
+NAND-171: x=16, y=17
+NAND-174: x=9, y=16
+NAND-177: x=0, y=17
+NAND-180: x=10, y=17
+NOR-183: x=7, y=3
+NOR-184: x=12, y=0
+NOR-185: x=1, y=13
+NOR-186: x=0, y=8
+NOR-187: x=3, y=8
+NOR-188: x=3, y=5
+NOR-189: x=18, y=1
+NOR-190: x=12, y=12
+NOR-191: x=13, y=18
+NOR-192: x=14, y=16
+NOR-193: x=9, y=14
+NOR-194: x=13, y=14
+NOR-195: x=14, y=5
+NOR-196: x=6, y=1
+NOR-197: x=18, y=17
+NOR-198: x=14, y=19
+AND-199: x=10, y=13
+NOT-203: x=17, y=14
+NOT-213: x=8, y=18
+NOT-223: x=13, y=16
+XOR-224: x=0, y=20
+XOR-227: x=15, y=12
+XOR-230: x=2, y=17
+XOR-233: x=1, y=12
+XOR-236: x=15, y=11
+XOR-239: x=7, y=19
+NAND-242: x=0, y=21
+XOR-243: x=1, y=16
+NAND-246: x=5, y=10
+XOR-247: x=3, y=18
+NAND-250: x=4, y=14
+XOR-251: x=18, y=18
+NAND-254: x=0, y=6
+NAND-255: x=6, y=16
+NAND-256: x=11, y=21
+NAND-257: x=6, y=12
+NAND-258: x=0, y=15
+NAND-259: x=11, y=16
+NAND-260: x=9, y=20
+NAND-263: x=8, y=21
+NAND-264: x=12, y=1
+NAND-267: x=2, y=11
+NAND-270: x=1, y=4
+NAND-273: x=15, y=4
+NAND-276: x=7, y=14
+NAND-279: x=2, y=14
+NAND-282: x=12, y=6
+NAND-285: x=18, y=6
+NAND-288: x=14, y=1
+NAND-289: x=0, y=7
+NAND-290: x=1, y=9
+NAND-291: x=9, y=11
+NAND-292: x=10, y=7
+NAND-293: x=3, y=15
+NAND-294: x=6, y=5
+NAND-295: x=13, y=21
+AND-296: x=10, y=3
+NOT-300: x=7, y=10
+NOT-301: x=16, y=1
+NOT-302: x=0, y=1
+NOT-303: x=1, y=1
+NOT-304: x=9, y=7
+NOT-305: x=0, y=4
+NOT-306: x=0, y=9
+NOT-307: x=7, y=0
+NOT-308: x=13, y=19
+NOT-309: x=4, y=13
+NOT-319: x=11, y=11
+NOT-329: x=3, y=4
+XOR-330: x=5, y=2
+XOR-331: x=17, y=5
+XOR-332: x=10, y=4
+XOR-333: x=0, y=2
+NAND-334: x=6, y=21
+XOR-335: x=17, y=4
+NAND-336: x=6, y=9
+XOR-337: x=5, y=15
+NAND-338: x=5, y=13
+XOR-339: x=0, y=3
+NAND-340: x=3, y=7
+XOR-341: x=15, y=0
+NAND-342: x=18, y=7
+XOR-343: x=17, y=8
+NAND-344: x=16, y=18
+NAND-345: x=15, y=15
+NAND-346: x=12, y=7
+NAND-347: x=18, y=14
+NAND-348: x=4, y=1
+NAND-349: x=21, y=1
+NAND-350: x=2, y=1
+NAND-351: x=1, y=0
+NAND-352: x=9, y=1
+NAND-353: x=5, y=3
+NAND-354: x=0, y=5
+NAND-355: x=10, y=0
+NAND-356: x=13, y=10
+AND-357: x=10, y=2
+NOT-360: x=7, y=8
+NOT-370: x=5, y=6
+NAND-371: x=1, y=19
+NAND-372: x=10, y=6
+NAND-373: x=0, y=11
+NAND-374: x=4, y=4
+NAND-375: x=20, y=11
+NAND-376: x=17, y=15
+NAND-377: x=20, y=14
+NAND-378: x=9, y=5
+NAND-379: x=11, y=18
+NAND-380: x=2, y=21
+NAND-381: x=8, y=12
+NAND-386: x=4, y=11
+NAND-393: x=6, y=6
+NAND-399: x=18, y=16
+NAND-404: x=17, y=21
+NAND-407: x=19, y=15
+NAND-411: x=9, y=8
+NAND-414: x=11, y=15
+NOT-415: x=0, y=13
+AND-416: x=11, y=9
+NOT-417: x=8, y=9
+NOT-418: x=14, y=11
+NOT-419: x=8, y=11
+NOT-420: x=8, y=8
+NOR-421: x=0, y=10
+NAND-422: x=11, y=10
+NAND-425: x=15, y=10
+NAND-428: x=8, y=10
+NAND-429: x=14, y=6
+NAND-430: x=5, y=7
+NAND-431: x=13, y=8
+NAND-432: x=14, y=7
+-------------------Chip Layout----------------------
+
+------ Row 0 : width 21 ------
+| INP-37 | NAND-351 | OUTP-430 | NOT-130 | NAND-165 | NOT-307 | INP-17 | OUTP-431 | NAND-355 | NOR-184 | XOR-341 | INP-92 | 
+
+------ Row 1 : width 23 ------
+| NOT-302 | NOT-303 | NAND-350 | NAND-348 | NOR-196 | NAND-352 | NOT-123 | NAND-264 | NAND-288 | NOT-301 | INP-60 | NOR-189 | NAND-349 | 
+
+------ Row 2 : width 23.5 ------
+| XOR-333 | XOR-330 | AND-357 | 
+
+------ Row 3 : width 23.5 ------
+| XOR-339 | NAND-353 | NOR-183 | AND-296 | 
+
+------ Row 4 : width 23 ------
+| NOT-305 | NAND-270 | NOT-329 | NAND-374 | OUTP-329 | INP-21 | NOT-147 | INP-105 | XOR-332 | NAND-273 | XOR-335 | INP-99 | 
+
+------ Row 5 : width 23 ------
+| NAND-354 | INP-53 | NOR-188 | NAND-294 | NOT-122 | NAND-378 | INP-27 | NAND-159 | NOR-195 | XOR-331 | INP-66 | 
+
+------ Row 6 : width 20 ------
+| NAND-254 | INP-40 | INP-43 | NOT-131 | NOT-370 | NAND-393 | NAND-372 | NAND-282 | NAND-429 | NAND-285 | 
+
+------ Row 7 : width 20 ------
+| NAND-289 | INP-34 | NAND-340 | NAND-430 | NOT-304 | NAND-292 | NAND-346 | NAND-432 | NAND-342 | 
+
+------ Row 8 : width 22 ------
+| NOR-186 | NOR-187 | INP-47 | NOT-360 | NOT-420 | NAND-411 | NAND-431 | XOR-343 | 
+
+------ Row 9 : width 23 ------
+| NOT-306 | NAND-290 | NOT-126 | INP-24 | OUTP-370 | NAND-336 | NOT-417 | INP-11 | OUTP-432 | AND-416 | 
+
+------ Row 10 : width 19 ------
+| NOR-421 | NAND-162 | NAND-246 | NOT-300 | NAND-428 | NAND-422 | NAND-356 | NAND-425 | 
+
+------ Row 11 : width 23 ------
+| NAND-373 | NAND-267 | NAND-386 | NOT-419 | NAND-291 | NOT-319 | NAND-168 | NOT-418 | XOR-236 | NAND-375 | INP-56 | 
+
+------ Row 12 : width 21 ------
+| NOT-127 | XOR-233 | NAND-257 | NAND-381 | NOR-190 | XOR-227 | INP-82 | 
+
+------ Row 13 : width 23.5 ------
+| NOT-415 | NOR-185 | NOT-309 | NAND-338 | INP-76 | NOT-134 | NOT-143 | AND-199 | 
+
+------ Row 14 : width 22 ------
+| INP-14 | INP-30 | NAND-279 | NAND-250 | INP-50 | NAND-276 | NOR-193 | NOT-135 | NOR-194 | INP-86 | NOT-203 | NAND-347 | NAND-377 | 
+
+------ Row 15 : width 23 ------
+| NAND-258 | OUTP-421 | NAND-293 | XOR-337 | INP-102 | NAND-414 | NAND-345 | NAND-376 | NAND-407 | 
+
+------ Row 16 : width 22 ------
+| INP-1 | XOR-243 | NAND-255 | NOT-142 | NAND-174 | NAND-259 | NOT-223 | NOR-192 | NOT-138 | NAND-399 | 
+
+------ Row 17 : width 21 ------
+| NAND-177 | XOR-230 | NOR-158 | NAND-180 | INP-63 | OUTP-223 | INP-79 | INP-112 | NAND-171 | NOR-197 | 
+
+------ Row 18 : width 23 ------
+| INP-89 | NOT-118 | INP-95 | XOR-247 | NOT-213 | NOT-150 | NOT-151 | NAND-379 | NOR-191 | NAND-344 | XOR-251 | 
+
+------ Row 19 : width 18 ------
+| NOT-146 | NAND-371 | NAND-154 | NOT-119 | INP-4 | XOR-239 | INP-115 | NOT-308 | NOR-198 | NOT-139 | 
+
+------ Row 20 : width 11 ------
+| XOR-224 | INP-8 | NOR-157 | NAND-260 | 
+
+------ Row 21 : width 21 ------
+| NAND-242 | NAND-380 | NAND-334 | NAND-263 | INP-108 | NAND-256 | NAND-295 | INP-73 | INP-69 | NAND-404 | 
+-----------------------------------------------------

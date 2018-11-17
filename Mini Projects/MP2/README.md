@@ -8,14 +8,21 @@ The rows of the chip are implemented using deque to store the placed gates and a
 
 To compile and run this parser program, begin with the the command 'make'
 To run the program, use the following command:
-`./placement <benchmark_file>` 
-
-Alternatively, you can use the included bash script `./test.sh` which will make the placement executable and then call the program for each .bench file found in the input folder. 
+`./placement init_test <benchmark_file>` 
 
 The program calculates and outputs the chip area, chip dimensions, and total HPWL of all the gates. Also included in the output is a a visual representation of what gates are placed in each row. The output can be found in the folder 'output' created during execution. The files are saved in the format `'chip_details_inputFileName.txt'`.
 
 ### Phase 2
-TBD
+Phase 2's goal was to implement simulated annealing to reduce the wire length, HPWL, of the input circuit's chip. To achieve this, each iteration of the algorithm makes n, the number of gates in the netlist, swaps and recalculates the total HPWL for each swap. Using Boltzmann probability, each swap is either accepted or rejected, with higher probability of acceptance earlier on in the runtime. Some runs of annealing will settle into a good solution earlier than the set amount of iterations my algorithm performs. In this case, the algorithm will make the decision to terminate and accept that solution as final to reduce runtime for large datasets. Thus, when the algorithm goes through ten iterations without accepting any swaps, it will terminate. Even with this added functionality, runtimes can be quite large because of the recalculation of HPWL for each swap. Up to 6 hours for the largest benchmark in the test suite provided on my machine. Further improvements could be to reduce the number of recalculations to decrease runtime. 
+
+To compile and run this parser program, begin with the the command 'make'
+To run the program, use the following command:
+`./placement <benchmark_file>` 
+
+Alternatively, you can use the included bash script `./test.sh` which will make the placement executable and then call the program for each .bench file found in the input folder. 
+
+The program calculates and outputs the chip area, chip dimensions, and total HPWL of all the gates. Also included in the output is a a visual representation of what gates are placed in each row. The output can be found in the folder 'output' created during execution. The files are saved in the format `'chip_details_inputFileName.txt'` and `'intermediate_details_inputFileName.txt'`.
+
 
 
 ### Directory Organization:

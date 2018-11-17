@@ -1,0 +1,584 @@
+-------------------Chip Info----------------------
+
+Bounding Chip area: 1089
+Bounding Chip dimensions: 33x33
+
+
+Actual Chip area: 1155
+Actual Chip dimensions: 35x33
+
+Initial HPWL: 12098.5
+After Annealing HPWL: 6254.5
+Annealing Execution Time: 274.192s
+
+-------------------Gate Info----------------------
+INP-1: x=16, y=27
+INP-8: x=29, y=30
+INP-13: x=5, y=27
+INP-17: x=27, y=20
+INP-26: x=18, y=27
+INP-29: x=33, y=0
+INP-36: x=14, y=30
+INP-42: x=23, y=13
+INP-51: x=31.5, y=19
+INP-55: x=22, y=29
+INP-59: x=2, y=31
+INP-68: x=0, y=6
+INP-72: x=18, y=16
+INP-73: x=12, y=22
+INP-74: x=1, y=9
+INP-75: x=22, y=1
+INP-80: x=4, y=4
+INP-85: x=21, y=0
+INP-86: x=29, y=3
+INP-87: x=31.5, y=4
+INP-88: x=30.5, y=4
+INP-89: x=11, y=10
+INP-90: x=3, y=17
+INP-91: x=27, y=9
+INP-96: x=20, y=16
+INP-101: x=28.5, y=6
+INP-106: x=14, y=23
+INP-111: x=22, y=15
+INP-116: x=0, y=22
+INP-121: x=18, y=25
+INP-126: x=3, y=22
+INP-130: x=17, y=31
+INP-135: x=30.5, y=19
+INP-138: x=19, y=16
+INP-143: x=4, y=27
+INP-146: x=20, y=26
+INP-149: x=10, y=25
+INP-152: x=17, y=27
+INP-153: x=7, y=25
+INP-156: x=14, y=9
+INP-159: x=8, y=10
+INP-165: x=8, y=25
+INP-171: x=13, y=22
+INP-177: x=1, y=16
+INP-183: x=18, y=7
+INP-189: x=10, y=3
+INP-195: x=10, y=6
+INP-201: x=17, y=13
+INP-207: x=0, y=15
+INP-210: x=22, y=30
+INP-219: x=33.5, y=8
+INP-228: x=28, y=14
+INP-237: x=0, y=3
+INP-246: x=21, y=5
+INP-255: x=0, y=14
+INP-259: x=16, y=5
+INP-260: x=17, y=5
+INP-261: x=5, y=6
+INP-267: x=18, y=5
+INP-268: x=12, y=29
+OUTP-388: x=21, y=16
+OUTP-389: x=18, y=15
+OUTP-390: x=3, y=32
+OUTP-391: x=32, y=2
+OUTP-418: x=9, y=8
+OUTP-419: x=24, y=24
+OUTP-420: x=14, y=0
+OUTP-421: x=14, y=2
+OUTP-422: x=14, y=22
+OUTP-423: x=1, y=5
+OUTP-446: x=0, y=30
+OUTP-447: x=6, y=7
+OUTP-448: x=28.5, y=7
+OUTP-449: x=0, y=24
+OUTP-450: x=2, y=16
+OUTP-767: x=10, y=22
+OUTP-768: x=0, y=5
+OUTP-850: x=1, y=30
+OUTP-863: x=0, y=2
+OUTP-864: x=25, y=0
+OUTP-865: x=3, y=11
+OUTP-866: x=14, y=16
+OUTP-874: x=4, y=2
+OUTP-878: x=0, y=10
+OUTP-879: x=12, y=28
+OUTP-880: x=29, y=29
+NAND-269: x=15, y=10
+NAND-270: x=21, y=20
+AND-273: x=28, y=16
+AND-276: x=21.5, y=17
+NAND-279: x=21, y=12
+NAND-280: x=17.5, y=17
+NAND-284: x=19.5, y=19
+NAND-285: x=19, y=7
+NAND-286: x=3, y=8
+AND-287: x=25, y=8
+AND-290: x=13, y=17
+AND-291: x=24, y=7
+AND-292: x=23, y=15
+AND-293: x=18, y=4
+AND-294: x=26, y=25
+AND-295: x=21, y=6
+AND-296: x=25, y=22
+AND-297: x=22, y=0
+OR-298: x=31, y=3
+NAND-301: x=25, y=18
+OR-302: x=30.5, y=15
+NAND-303: x=20, y=23
+OR-304: x=28, y=20
+NAND-305: x=12, y=23
+OR-306: x=24, y=23
+NAND-307: x=28.5, y=19
+OR-308: x=27, y=31
+AND-309: x=17, y=22
+NOT-310: x=2, y=30
+AND-316: x=32, y=20
+AND-317: x=14, y=12
+AND-318: x=21, y=31
+NAND-319: x=18, y=14
+NOR-322: x=20, y=13
+AND-323: x=32, y=5
+NAND-324: x=22, y=25
+OR-325: x=17, y=12
+NAND-326: x=17, y=32
+OR-327: x=3, y=30
+NAND-328: x=28.5, y=4
+OR-329: x=21, y=8
+NAND-330: x=1, y=3
+OR-331: x=11, y=1
+AND-332: x=29.5, y=22
+AND-333: x=15, y=29
+AND-334: x=15, y=14
+AND-335: x=19, y=27
+AND-336: x=9, y=28
+AND-337: x=29.5, y=6
+AND-338: x=1, y=23
+AND-339: x=17, y=2
+AND-340: x=16, y=20
+AND-341: x=22, y=10
+NOT-342: x=16, y=6
+NOT-343: x=19, y=20
+OR-344: x=21, y=26
+NOT-345: x=6, y=14
+NOT-346: x=16, y=18
+NOT-347: x=27, y=14
+NOR-348: x=11, y=25
+OR-349: x=17, y=6
+OR-350: x=1, y=15
+NOT-351: x=13, y=9
+NOT-352: x=29, y=13
+NOT-353: x=30, y=3
+NOT-354: x=16, y=31
+NAND-355: x=9, y=10
+AND-356: x=4, y=0
+NAND-357: x=25, y=16
+NAND-360: x=27, y=13
+NAND-363: x=22, y=23
+NAND-366: x=31, y=31
+NOT-369: x=23.5, y=19
+NOR-375: x=25.5, y=4
+NAND-376: x=15, y=7
+NAND-379: x=19, y=32
+NAND-382: x=25, y=3
+NAND-385: x=9, y=2
+BUFF-388: x=20, y=18
+BUFF-389: x=20, y=15
+BUFF-390: x=3, y=31
+BUFF-391: x=17, y=1
+OR-392: x=6, y=27
+NOT-393: x=4, y=18
+NOT-399: x=18, y=13
+AND-400: x=9, y=23
+NOT-401: x=28, y=9
+NOT-402: x=0, y=16
+NOT-403: x=9, y=5
+NOT-404: x=31, y=11
+NOT-405: x=29, y=9
+AND-406: x=29, y=2
+NOT-407: x=26, y=17
+NOT-408: x=26, y=5
+AND-409: x=27, y=32
+NAND-410: x=31, y=12
+NOT-411: x=26, y=27
+NOT-412: x=21, y=30
+AND-413: x=24, y=31
+NOT-414: x=25, y=10
+NOT-415: x=10, y=7
+AND-416: x=6, y=8
+AND-417: x=2, y=12
+BUFF-418: x=14, y=8
+BUFF-419: x=24, y=21
+BUFF-420: x=6, y=1
+BUFF-421: x=31, y=0
+BUFF-422: x=10, y=24
+BUFF-423: x=2, y=0
+NOT-424: x=9, y=25
+AND-425: x=26, y=10
+AND-426: x=32, y=10
+AND-427: x=6, y=19
+AND-432: x=30, y=9
+NAND-437: x=24, y=9
+NAND-442: x=25, y=11
+NAND-443: x=19, y=10
+AND-444: x=23, y=27
+AND-445: x=8, y=12
+BUFF-446: x=0, y=31
+BUFF-447: x=15, y=2
+BUFF-448: x=30, y=5
+BUFF-449: x=1, y=22
+BUFF-450: x=7, y=14
+NOT-451: x=5, y=31
+NOR-460: x=24, y=13
+NOR-463: x=27, y=17
+NAND-466: x=32.5, y=19
+AND-475: x=10, y=30
+AND-476: x=4, y=32
+AND-477: x=26, y=30
+AND-478: x=15, y=30
+AND-479: x=10, y=32
+AND-480: x=25, y=26
+AND-481: x=13, y=27
+AND-482: x=18, y=31
+NAND-483: x=18, y=3
+OR-488: x=0, y=18
+OR-489: x=5, y=2
+OR-490: x=24.5, y=19
+OR-491: x=22, y=5
+NOR-492: x=24, y=32
+NOR-495: x=4, y=11
+NAND-498: x=30, y=17
+OR-499: x=29, y=14
+NAND-500: x=28, y=23
+OR-501: x=30, y=29
+AND-502: x=17, y=21
+NOR-503: x=7, y=32
+AND-504: x=25, y=24
+NOR-505: x=23, y=30
+AND-506: x=18, y=9
+NOR-507: x=6, y=28
+AND-508: x=7, y=30
+NOR-509: x=8, y=31
+AND-510: x=3, y=29
+AND-511: x=11, y=26
+AND-512: x=5, y=18
+AND-513: x=8, y=1
+AND-514: x=13, y=32
+AND-515: x=30, y=32
+AND-516: x=8, y=11
+AND-517: x=10, y=9
+NAND-518: x=10, y=29
+OR-519: x=16, y=28
+NAND-520: x=4, y=9
+OR-521: x=1, y=10
+AND-522: x=5, y=12
+AND-523: x=15, y=15
+AND-524: x=9, y=20
+AND-525: x=17, y=18
+AND-526: x=15, y=25
+NAND-527: x=29, y=10
+NAND-528: x=0, y=28
+NAND-529: x=4, y=23
+NAND-530: x=30, y=13
+NAND-533: x=25, y=20
+NOR-536: x=17, y=23
+NOR-537: x=27, y=27
+NOR-538: x=11, y=11
+NOR-539: x=18, y=30
+NOR-540: x=0, y=32
+NOR-541: x=0, y=1
+NOR-542: x=23, y=29
+NOR-543: x=21, y=9
+NAND-544: x=6, y=23
+NAND-547: x=6, y=9
+NOT-550: x=16, y=21
+NOT-551: x=22, y=27
+AND-552: x=18, y=24
+NAND-553: x=15, y=22
+NAND-557: x=24, y=25
+NAND-561: x=6, y=31
+NAND-565: x=6, y=29
+NAND-569: x=8, y=29
+NAND-573: x=5, y=3
+NAND-577: x=23, y=22
+NAND-581: x=23, y=3
+NOT-585: x=7, y=11
+NOT-586: x=1, y=6
+AND-587: x=0, y=25
+AND-588: x=19, y=25
+AND-589: x=6, y=5
+NAND-590: x=16, y=24
+OR-593: x=12, y=24
+AND-596: x=11, y=13
+NAND-597: x=14, y=31
+OR-600: x=20, y=21
+AND-605: x=22, y=16
+NAND-606: x=8, y=21
+OR-609: x=2, y=28
+AND-615: x=10, y=27
+NAND-616: x=19, y=5
+OR-619: x=21, y=11
+AND-624: x=30, y=21
+NAND-625: x=13, y=29
+OR-628: x=26, y=28
+AND-631: x=28, y=24
+NAND-632: x=26, y=0
+OR-635: x=22, y=2
+AND-640: x=28, y=0
+NAND-641: x=11, y=2
+OR-644: x=0, y=4
+AND-650: x=15, y=9
+NAND-651: x=20, y=2
+OR-654: x=14, y=4
+AND-659: x=13, y=5
+NOR-660: x=17, y=26
+NOR-661: x=4, y=22
+NOT-662: x=13, y=30
+AND-665: x=7, y=24
+NOR-669: x=9, y=15
+NOT-670: x=16, y=32
+AND-673: x=14, y=26
+NOR-677: x=13, y=21
+NOT-678: x=11, y=18
+AND-682: x=8, y=26
+NOR-686: x=10.5, y=19
+NOT-687: x=10, y=8
+AND-692: x=10, y=5
+NOR-696: x=22, y=18
+NOT-697: x=26, y=21
+AND-700: x=27, y=18
+NOR-704: x=30, y=23
+NOT-705: x=13, y=2
+AND-708: x=26, y=2
+NOR-712: x=30.5, y=8
+NOT-713: x=9, y=6
+AND-717: x=1, y=2
+NOR-721: x=11, y=7
+NOT-722: x=23, y=1
+AND-727: x=20, y=14
+NOR-731: x=15, y=16
+NAND-732: x=11, y=6
+NAND-733: x=2, y=6
+NAND-734: x=11, y=3
+NOT-735: x=18, y=29
+AND-736: x=4, y=17
+AND-737: x=0, y=29
+NOT-738: x=19, y=13
+AND-739: x=20, y=28
+AND-740: x=23, y=28
+NOT-741: x=6, y=25
+AND-742: x=13, y=28
+AND-743: x=8, y=18
+NOT-744: x=5, y=15
+AND-745: x=6, y=15
+AND-746: x=11, y=8
+NOT-747: x=19, y=15
+AND-748: x=18, y=11
+AND-749: x=20, y=22
+NOT-750: x=7, y=0
+AND-751: x=25.5, y=6
+AND-752: x=8, y=0
+NOT-753: x=19, y=0
+AND-754: x=3, y=5
+AND-755: x=13, y=6
+NOT-756: x=23, y=14
+NOR-757: x=11, y=16
+AND-758: x=12, y=15
+AND-759: x=6, y=6
+AND-760: x=3, y=1
+NAND-761: x=29, y=11
+NAND-762: x=15, y=1
+NAND-763: x=11, y=0
+NAND-764: x=6, y=16
+NAND-765: x=11, y=21
+NAND-766: x=11, y=12
+BUFF-767: x=0, y=26
+BUFF-768: x=0, y=13
+NOR-769: x=3, y=25
+NOR-770: x=21, y=32
+NOR-771: x=7, y=22
+NOR-772: x=12, y=14
+NAND-773: x=15, y=0
+NOR-777: x=16, y=8
+NAND-778: x=21, y=7
+NOR-781: x=27, y=1
+NAND-782: x=10, y=14
+NOR-785: x=0, y=8
+NOR-786: x=8, y=16
+NOR-787: x=3, y=7
+NOR-788: x=24, y=14
+AND-789: x=19, y=1
+NOR-790: x=22.5, y=4
+AND-791: x=27, y=5
+NOR-792: x=3, y=20
+AND-793: x=3, y=19
+AND-794: x=3, y=16
+NAND-795: x=27, y=3
+NAND-796: x=19, y=8
+NOR-802: x=20, y=3
+NOR-803: x=24, y=1
+NOR-804: x=2, y=21
+NOR-805: x=16.5, y=19
+NOR-806: x=1, y=14
+AND-807: x=0, y=19
+AND-808: x=15, y=3
+AND-809: x=7, y=3
+AND-810: x=2, y=26
+NAND-811: x=14, y=11
+NAND-812: x=5, y=13
+NAND-813: x=7, y=7
+NAND-814: x=12, y=18
+NAND-815: x=7, y=13
+NAND-819: x=7, y=17
+NAND-822: x=4, y=14
+NOR-825: x=0, y=11
+NOR-826: x=21, y=24
+NOR-827: x=6, y=20
+NOR-828: x=1, y=24
+NOT-829: x=8, y=23
+NOR-830: x=5, y=10
+AND-831: x=5, y=4
+NOR-832: x=19, y=29
+AND-833: x=30, y=28
+NOR-834: x=0, y=20
+AND-835: x=5, y=21
+AND-836: x=14, y=13
+NAND-837: x=11, y=4
+NAND-838: x=29.5, y=7
+NAND-839: x=0, y=27
+NOT-840: x=10, y=21
+NAND-841: x=5, y=24
+NOR-842: x=8, y=4
+NOR-843: x=26, y=29
+NOR-844: x=0, y=17
+NOR-845: x=28, y=12
+NOT-846: x=2, y=5
+NOT-847: x=27, y=16
+NOT-848: x=14, y=7
+AND-849: x=11, y=31
+BUFF-850: x=0, y=12
+AND-851: x=0, y=7
+AND-852: x=27.5, y=15
+AND-853: x=12, y=10
+NAND-854: x=25, y=12
+NOT-855: x=0, y=9
+NOT-856: x=31, y=10
+NOT-857: x=17, y=7
+NOT-858: x=9, y=14
+NOR-859: x=2, y=13
+NOR-860: x=27, y=21
+NOR-861: x=10, y=17
+NOT-862: x=29.5, y=8
+BUFF-863: x=0, y=0
+BUFF-864: x=32, y=13
+BUFF-865: x=2, y=9
+BUFF-866: x=8, y=9
+NAND-867: x=5, y=26
+NAND-868: x=13, y=20
+NAND-869: x=13.5, y=19
+NOT-870: x=20, y=0
+NOT-871: x=4, y=24
+NOT-872: x=11, y=22
+NOT-873: x=12, y=20
+BUFF-874: x=3, y=3
+NOT-875: x=0, y=23
+NOT-876: x=14, y=25
+NOT-877: x=20, y=20
+BUFF-878: x=0, y=21
+BUFF-879: x=15, y=23
+BUFF-880: x=32.5, y=16
+-------------------Chip Layout----------------------
+
+------ Row 0 : width 34 ------
+| BUFF-863 | BUFF-423 | AND-356 | NOT-750 | AND-752 | NAND-763 | OUTP-420 | NAND-773 | NOT-753 | NOT-870 | INP-85 | AND-297 | OUTP-864 | NAND-632 | AND-640 | BUFF-421 | INP-29 | 
+
+------ Row 1 : width 30 ------
+| NOR-541 | AND-760 | BUFF-420 | AND-513 | OR-331 | NAND-762 | BUFF-391 | AND-789 | INP-75 | NOT-722 | NOR-803 | NOR-781 | 
+
+------ Row 2 : width 33 ------
+| OUTP-863 | AND-717 | OUTP-874 | OR-489 | NAND-385 | NAND-641 | NOT-705 | OUTP-421 | BUFF-447 | AND-339 | NAND-651 | OR-635 | AND-708 | AND-406 | OUTP-391 | 
+
+------ Row 3 : width 35 ------
+| INP-237 | NAND-330 | BUFF-874 | NAND-573 | AND-809 | INP-189 | NAND-734 | AND-808 | NAND-483 | NOR-802 | NAND-581 | NAND-382 | NAND-795 | INP-86 | NOT-353 | OR-298 | 
+
+------ Row 4 : width 32.5 ------
+| OR-644 | INP-80 | AND-831 | NOR-842 | NAND-837 | OR-654 | AND-293 | NOR-790 | NOR-375 | NAND-328 | INP-88 | INP-87 | 
+
+------ Row 5 : width 35 ------
+| OUTP-768 | OUTP-423 | NOT-846 | AND-754 | AND-589 | NOT-403 | AND-692 | AND-659 | INP-259 | INP-260 | INP-267 | NAND-616 | INP-246 | OR-491 | NOT-408 | AND-791 | BUFF-448 | AND-323 | 
+
+------ Row 6 : width 32.5 ------
+| INP-68 | NOT-586 | NAND-733 | INP-261 | AND-759 | NOT-713 | INP-195 | NAND-732 | AND-755 | NOT-342 | OR-349 | AND-295 | AND-751 | INP-101 | AND-337 | 
+
+------ Row 7 : width 33.5 ------
+| AND-851 | NOR-787 | OUTP-447 | NAND-813 | NOT-415 | NOR-721 | NOT-848 | NAND-376 | NOT-857 | INP-183 | NAND-285 | NAND-778 | AND-291 | OUTP-448 | NAND-838 | 
+
+------ Row 8 : width 34.5 ------
+| NOR-785 | NAND-286 | AND-416 | OUTP-418 | NOT-687 | AND-746 | BUFF-418 | NOR-777 | NAND-796 | OR-329 | AND-287 | NOT-862 | NOR-712 | INP-219 | 
+
+------ Row 9 : width 34.5 ------
+| NOT-855 | INP-74 | BUFF-865 | NAND-520 | NAND-547 | BUFF-866 | AND-517 | NOT-351 | INP-156 | AND-650 | AND-506 | NOR-543 | NAND-437 | INP-91 | NOT-401 | NOT-405 | AND-432 | 
+
+------ Row 10 : width 35 ------
+| OUTP-878 | OR-521 | NOR-830 | INP-159 | NAND-355 | INP-89 | AND-853 | NAND-269 | NAND-443 | AND-341 | NOT-414 | AND-425 | NAND-527 | NOT-856 | AND-426 | 
+
+------ Row 11 : width 32 ------
+| NOR-825 | OUTP-865 | NOR-495 | NOT-585 | AND-516 | NOR-538 | NAND-811 | AND-748 | OR-619 | NAND-442 | NAND-761 | NOT-404 | 
+
+------ Row 12 : width 33 ------
+| BUFF-850 | AND-417 | AND-522 | AND-445 | NAND-766 | AND-317 | OR-325 | NAND-279 | NAND-854 | NOR-845 | NAND-410 | 
+
+------ Row 13 : width 34 ------
+| BUFF-768 | NOR-859 | NAND-812 | NAND-815 | AND-596 | AND-836 | INP-201 | NOT-399 | NOT-738 | NOR-322 | INP-42 | NOR-460 | NAND-360 | NOT-352 | NAND-530 | BUFF-864 | 
+
+------ Row 14 : width 33 ------
+| INP-255 | NOR-806 | NAND-822 | NOT-345 | BUFF-450 | NOT-858 | NAND-782 | NOR-772 | AND-334 | NAND-319 | AND-727 | NOT-756 | NOR-788 | NOT-347 | INP-228 | OR-499 | 
+
+------ Row 15 : width 34.5 ------
+| INP-207 | OR-350 | NOT-744 | AND-745 | NOR-669 | AND-758 | AND-523 | OUTP-389 | NOT-747 | BUFF-389 | INP-111 | AND-292 | AND-852 | OR-302 | 
+
+------ Row 16 : width 34.5 ------
+| NOT-402 | INP-177 | OUTP-450 | AND-794 | NAND-764 | NOR-786 | NOR-757 | OUTP-866 | NOR-731 | INP-72 | INP-138 | INP-96 | OUTP-388 | AND-605 | NAND-357 | NOT-847 | AND-273 | BUFF-880 | 
+
+------ Row 17 : width 32 ------
+| NOR-844 | INP-90 | AND-736 | NAND-819 | NOR-861 | AND-290 | NAND-280 | AND-276 | NOT-407 | NOR-463 | NAND-498 | 
+
+------ Row 18 : width 30 ------
+| OR-488 | NOT-393 | AND-512 | AND-743 | NOT-678 | NAND-814 | NOT-346 | AND-525 | BUFF-388 | NOR-696 | NAND-301 | AND-700 | 
+
+------ Row 19 : width 34.5 ------
+| AND-807 | AND-793 | AND-427 | NOR-686 | NAND-869 | NOR-805 | NAND-284 | NOT-369 | OR-490 | NAND-307 | INP-135 | INP-51 | NAND-466 | 
+
+------ Row 20 : width 35 ------
+| NOR-834 | NOR-792 | NOR-827 | AND-524 | NOT-873 | NAND-868 | AND-340 | NOT-343 | NOT-877 | NAND-270 | NAND-533 | INP-17 | OR-304 | AND-316 | 
+
+------ Row 21 : width 33 ------
+| BUFF-878 | NOR-804 | AND-835 | NAND-606 | NOT-840 | NAND-765 | NOR-677 | NOT-550 | AND-502 | OR-600 | BUFF-419 | NOT-697 | NOR-860 | AND-624 | 
+
+------ Row 22 : width 32.5 ------
+| INP-116 | BUFF-449 | INP-126 | NOR-661 | NOR-771 | OUTP-767 | NOT-872 | INP-73 | INP-171 | OUTP-422 | NAND-553 | AND-309 | AND-749 | NAND-577 | AND-296 | AND-332 | 
+
+------ Row 23 : width 33 ------
+| NOT-875 | AND-338 | NAND-529 | NAND-544 | NOT-829 | AND-400 | NAND-305 | INP-106 | BUFF-879 | NOR-536 | NAND-303 | NAND-363 | OR-306 | NAND-500 | NOR-704 | 
+
+------ Row 24 : width 31 ------
+| OUTP-449 | NOR-828 | NOT-871 | NAND-841 | AND-665 | BUFF-422 | OR-593 | NAND-590 | AND-552 | NOR-826 | OUTP-419 | AND-504 | AND-631 | 
+
+------ Row 25 : width 30.5 ------
+| AND-587 | NOR-769 | NOT-741 | INP-153 | INP-165 | NOT-424 | INP-149 | NOR-348 | NOT-876 | AND-526 | INP-121 | AND-588 | NAND-324 | NAND-557 | AND-294 | 
+
+------ Row 26 : width 28 ------
+| BUFF-767 | AND-810 | NAND-867 | AND-682 | AND-511 | AND-673 | NOR-660 | INP-146 | OR-344 | AND-480 | 
+
+------ Row 27 : width 30 ------
+| NAND-839 | INP-143 | INP-13 | OR-392 | AND-615 | AND-481 | INP-1 | INP-152 | INP-26 | AND-335 | NOT-551 | AND-444 | NOT-411 | NOR-537 | 
+
+------ Row 28 : width 33 ------
+| NAND-528 | OR-609 | NOR-507 | AND-336 | OUTP-879 | AND-742 | OR-519 | AND-739 | AND-740 | OR-628 | AND-833 | 
+
+------ Row 29 : width 34 ------
+| AND-737 | AND-510 | NAND-565 | NAND-569 | NAND-518 | INP-268 | NAND-625 | AND-333 | NOT-735 | NOR-832 | INP-55 | NOR-542 | NOR-843 | OUTP-880 | OR-501 | 
+
+------ Row 30 : width 30 ------
+| OUTP-446 | OUTP-850 | NOT-310 | OR-327 | AND-508 | AND-475 | NOT-662 | INP-36 | AND-478 | NOR-539 | NOT-412 | INP-210 | NOR-505 | AND-477 | INP-8 | 
+
+------ Row 31 : width 33 ------
+| BUFF-446 | INP-59 | BUFF-390 | NOT-451 | NAND-561 | NOR-509 | AND-849 | NAND-597 | NOT-354 | INP-130 | AND-482 | AND-318 | AND-413 | OR-308 | NAND-366 | 
+
+------ Row 32 : width 33 ------
+| NOR-540 | OUTP-390 | AND-476 | NOR-503 | AND-479 | AND-514 | NOT-670 | NAND-326 | NAND-379 | NOR-770 | NOR-492 | AND-409 | AND-515 | 
+-----------------------------------------------------
