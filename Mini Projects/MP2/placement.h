@@ -37,6 +37,7 @@ struct Chip_Layout {
     Chip_Layout(const Chip_Layout& copy){ 
 		total_HPWL = copy.total_HPWL;
 		starting_HPWL = copy.starting_HPWL;
+		actual_width = copy.actual_width;
 		width = copy.width;
 		height = copy.height;
 		rows = new layout_row[(int)height];
@@ -74,6 +75,7 @@ struct Chip_Layout {
 	}
 
 	void calculate_wire_lengths();
+	void recalculate_wire_lengths(int gate1_row, int gate1_column, int gate2_row, int gate2_column);
 	double calculate_wire_length(node n);
 };
 

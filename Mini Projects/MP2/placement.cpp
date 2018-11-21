@@ -10,6 +10,8 @@
 #include <sys/types.h> 
 #include <random>
 #include <algorithm>
+#include <cstring>
+
 
 #include <time.h>
 
@@ -86,7 +88,9 @@ void Chip::init_chip(Circuit ckt){
 		node *n = elem.second;
 		nodes_r.push_back(n);
 	}
-	default_random_engine  rng(time(NULL)); 
+	default_random_engine rng(time(NULL)); 
+	// default_random_engine rng(0);//rng(time(NULL)); //use this for reapeatability
+
 	shuffle(begin(nodes_r), std::end(nodes_r), rng);
 
 	//fill layout randomly  with our gates
@@ -195,10 +199,10 @@ void Chip::simulated_annealing(string in_file){
 Chip_Layout Chip::perturb(Chip_Layout *curr_sol){
 	Chip_Layout new_sol = *curr_sol;
 	//get 2 random grid points to swap
-	int i1 = random_int(0,(int)new_sol.height-1);
-	int j1 = random_int(0,new_sol.rows[i1].row.size()-1);
-	int i2 = random_int(0,(int)new_sol.height-1);
-	int j2 = random_int(0,new_sol.rows[i2].row.size()-1);
+	int i1 = random_int(0,(int)new_sol.height-1); //row1
+	int j1 = random_int(0,new_sol.rows[i1].row.size()-1); //column1
+	int i2 = random_int(0,(int)new_sol.height-1); //row2
+	int j2 = random_int(0,new_sol.rows[i2].row.size()-1); //column2
 
 	//swap gates
 	deque<node> temp1, temp2;
@@ -217,8 +221,8 @@ Chip_Layout Chip::perturb(Chip_Layout *curr_sol){
 	for (int i = 0; i < temp2.size(); i++){
 		new_sol.gate_pushback(temp2[i],i2);
 	}
-
-	new_sol.calculate_wire_lengths();
+	// new_sol.calculate_wire_lengths();
+	new_sol.recalculate_wire_lengths(i1,j1,i2,j2);
 	return new_sol;
 }
 
@@ -375,6 +379,52 @@ void Chip_Layout::calculate_wire_lengths(){
 	}
 }
 
+void Chip_Layout::recalculate_wire_lengths(int gate1_row, int gate1_column, int gate2_row, int gate2_column){
+	node gate1 = rows[gate1_row].row[gate1_column];
+	node gate2 = rows[gate2_row].row[gate2_column];
+
+	//update the chip's actual width
+	actual_width = 0;
+	for (int i=0; i<height; i++){
+		if (rows[i].curr_width > actual_width){
+			actual_width = rows[i].curr_width;
+		}
+	}
+
+	deque<node> gates_to_recalculate;
+
+	gates_to_recalculate.push_back(gate1);
+	gates_to_recalculate.push_back(gate2);
+	//if the swapped gates are of different length, update all cells that follow them
+	//in their respective rows
+	if (gate1.width != gate2.width){
+		for (int i = gate1_column+1; i <  rows[gate1_row].row.size(); i++){
+			gates_to_recalculate.push_back(rows[gate1_row].row[i]);
+		}
+		for (int i = gate2_column+1; i <  rows[gate2_row].row.size(); i++){
+			gates_to_recalculate.push_back(rows[gate2_row].row[i]);
+		}
+	}
+	//Next iterate through all output to end of circuit
+	while(!gates_to_recalculate.empty()){
+		node temp = gates_to_recalculate.front();
+
+		//subtract old gate's HPWL, recalculate HPWL, and add back new HPWL
+		total_HPWL -= gate_coordinates[temp.key].wire_length;
+		gate_coordinates[temp.key].wire_length = calculate_wire_length(temp);
+		total_HPWL += gate_coordinates[temp.key].wire_length;
+
+		for (auto elem: temp.inputs){//do the same for this gates inputs
+			node n = *elem.second;
+			//subtract old gate's HPWL, recalculate HPWL, and add back new HPWL
+			total_HPWL -= gate_coordinates[n.key].wire_length;
+			gate_coordinates[n.key].wire_length = calculate_wire_length(n);
+			total_HPWL += gate_coordinates[n.key].wire_length;
+		}
+		gates_to_recalculate.pop_front();
+	}
+}
+
 double Chip_Layout::calculate_wire_length(node n){
 	double length = 0;
 	struct Coordinates coord = gate_coordinates[n.key];
@@ -404,8 +454,6 @@ double Chip_Layout::calculate_wire_length(node n){
 	//(2*length of rectangle + 2* height of rectangle)/2
 	//or length of rectangle + height of rectangle
 	length = (max_x-min_x)+(max_y-min_y);
-	// gate_coordinates[n.key].wire_length = length;
-	// cout << length << endl;
 	return length;
 }
 
@@ -422,6 +470,7 @@ int random_int(int min, int max){
 	static bool first = true;
 	if (first) {  
 		srand(time(NULL)); //seeding for the first time only!
+		// srand(0); //use this for repeatability
 		first = false;
 	}
 	return min + rand() % (( max + 1 ) - min);

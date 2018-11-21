@@ -4,378 +4,378 @@ Bounding Chip area: 900
 Bounding Chip dimensions: 30x30
 
 
-Actual Chip area: 960
-Actual Chip dimensions: 32x30
+Actual Chip area: 930
+Actual Chip dimensions: 31x30
 
-Initial HPWL: 6045.5
-After Annealing HPWL: 2531.5
-Annealing Execution Time: 92.2663s
+Initial HPWL: 6152.5
+After Annealing HPWL: 2653.5
+Annealing Execution Time: 28.8374s
 
 -------------------Gate Info----------------------
-INP-1: x=10, y=15
-INP-5: x=6, y=29
-INP-9: x=11, y=26
-INP-13: x=11, y=21
-INP-17: x=18, y=24
-INP-21: x=0, y=14
-INP-25: x=15, y=14
-INP-29: x=18, y=17
-INP-33: x=0, y=27
-INP-37: x=5, y=19
-INP-41: x=20, y=7
-INP-45: x=12, y=26
-INP-49: x=10, y=20
-INP-53: x=3, y=19
-INP-57: x=9, y=17
-INP-61: x=13, y=25
-INP-65: x=8, y=10
-INP-69: x=5, y=6
-INP-73: x=16, y=3
-INP-77: x=0, y=11
-INP-81: x=0, y=9
-INP-85: x=11, y=6
-INP-89: x=21, y=2
-INP-93: x=0, y=0
-INP-97: x=10, y=4
-INP-101: x=13, y=9
-INP-105: x=14, y=14
-INP-109: x=21, y=7
-INP-113: x=7, y=2
-INP-117: x=8, y=5
-INP-121: x=23, y=7
-INP-125: x=0, y=12
-INP-129: x=5, y=17
-INP-130: x=0, y=21
-INP-131: x=5, y=2
-INP-132: x=17, y=6
-INP-133: x=4, y=19
-INP-134: x=26, y=20
-INP-135: x=19, y=29
-INP-136: x=9, y=5
-INP-137: x=17, y=20
-OUTP-724: x=9, y=20
-OUTP-725: x=0, y=26
-OUTP-726: x=0, y=18
-OUTP-727: x=17, y=17
-OUTP-728: x=26, y=10
-OUTP-729: x=6, y=14
-OUTP-730: x=9, y=18
-OUTP-731: x=22, y=0
-OUTP-732: x=12, y=20
-OUTP-733: x=5, y=29
-OUTP-734: x=20, y=20
-OUTP-735: x=18, y=26
-OUTP-736: x=18, y=28
-OUTP-737: x=7, y=29
-OUTP-738: x=1, y=1
-OUTP-739: x=19, y=28
-OUTP-740: x=7, y=14
-OUTP-741: x=0, y=3
-OUTP-742: x=16, y=14
-OUTP-743: x=21, y=8
-OUTP-744: x=6, y=2
-OUTP-745: x=11, y=9
-OUTP-746: x=13, y=16
-OUTP-747: x=17, y=24
-OUTP-748: x=12, y=9
-OUTP-749: x=22, y=14
-OUTP-750: x=30.5, y=11
-OUTP-751: x=30, y=9
-OUTP-752: x=0, y=1
-OUTP-753: x=11, y=20
-OUTP-754: x=28, y=26
-OUTP-755: x=17, y=10
-XOR-250: x=1, y=21
-XOR-251: x=5, y=22
-XOR-252: x=14, y=12
-XOR-253: x=16, y=4
-XOR-254: x=0, y=29
-XOR-255: x=13, y=29
-XOR-256: x=1, y=27
-XOR-257: x=5, y=25
-XOR-258: x=10, y=7
-XOR-259: x=25, y=9
-XOR-260: x=11, y=2
-XOR-261: x=6, y=0
-XOR-262: x=5, y=7
-XOR-263: x=1, y=9
-XOR-264: x=10, y=5
-XOR-265: x=6, y=11
-AND-266: x=6, y=17
-AND-267: x=0, y=19
-AND-268: x=5, y=5
-AND-269: x=21, y=6
-AND-270: x=5, y=10
-AND-271: x=24.5, y=21
-AND-272: x=19, y=26
-AND-273: x=9, y=10
-XOR-274: x=5, y=23
-XOR-275: x=6, y=26
-XOR-276: x=0, y=15
-XOR-277: x=0, y=23
-XOR-278: x=12, y=6
-XOR-279: x=11, y=0
-XOR-280: x=19, y=16
-XOR-281: x=20, y=28
-XOR-282: x=6, y=9
-XOR-283: x=2, y=1
-XOR-284: x=7, y=1
-XOR-285: x=14, y=9
-XOR-286: x=24, y=18
-XOR-287: x=21, y=20
-XOR-288: x=0, y=13
+INP-1: x=7, y=29
+INP-5: x=15, y=28
+INP-9: x=25, y=26
+INP-13: x=19, y=25
+INP-17: x=5, y=22
+INP-21: x=15, y=6
+INP-25: x=19, y=29
+INP-29: x=24, y=24
+INP-33: x=1, y=4
+INP-37: x=0, y=8
+INP-41: x=27, y=11
+INP-45: x=28, y=2
+INP-49: x=0, y=13
+INP-53: x=16, y=0
+INP-57: x=22, y=2
+INP-61: x=5, y=16
+INP-65: x=21, y=15
+INP-69: x=6, y=9
+INP-73: x=5, y=14
+INP-77: x=6, y=29
+INP-81: x=6, y=16
+INP-85: x=13, y=10
+INP-89: x=7, y=24
+INP-93: x=6, y=22
+INP-97: x=10, y=8
+INP-101: x=17, y=0
+INP-105: x=1, y=8
+INP-109: x=2, y=8
+INP-113: x=11, y=23
+INP-117: x=0, y=4
+INP-121: x=8, y=3
+INP-125: x=0, y=17
+INP-129: x=0, y=23
+INP-130: x=0, y=29
+INP-131: x=22, y=15
+INP-132: x=13, y=25
+INP-133: x=4, y=18
+INP-134: x=11, y=9
+INP-135: x=20, y=10
+INP-136: x=22, y=22
+INP-137: x=0, y=9
+OUTP-724: x=0, y=15
+OUTP-725: x=12, y=24
+OUTP-726: x=21, y=28
+OUTP-727: x=25, y=20
+OUTP-728: x=24, y=23
+OUTP-729: x=4, y=8
+OUTP-730: x=25, y=29
+OUTP-731: x=18, y=29
+OUTP-732: x=16, y=1
+OUTP-733: x=0, y=3
+OUTP-734: x=15, y=0
+OUTP-735: x=10, y=0
+OUTP-736: x=0, y=1
+OUTP-737: x=25, y=16
+OUTP-738: x=28.5, y=4
+OUTP-739: x=5, y=19
+OUTP-740: x=29, y=19
+OUTP-741: x=12, y=14
+OUTP-742: x=3, y=8
+OUTP-743: x=0, y=24
+OUTP-744: x=21, y=8
+OUTP-745: x=11, y=24
+OUTP-746: x=6, y=24
+OUTP-747: x=5, y=27
+OUTP-748: x=14, y=0
+OUTP-749: x=21, y=2
+OUTP-750: x=4, y=3
+OUTP-751: x=0, y=6
+OUTP-752: x=16, y=21
+OUTP-753: x=0, y=11
+OUTP-754: x=0, y=5
+OUTP-755: x=3, y=18
+XOR-250: x=13, y=29
+XOR-251: x=26, y=20
+XOR-252: x=7, y=22
+XOR-253: x=16, y=28
+XOR-254: x=5, y=8
+XOR-255: x=22, y=1
+XOR-256: x=0, y=0
+XOR-257: x=10, y=4
+XOR-258: x=0, y=16
+XOR-259: x=6, y=13
+XOR-260: x=13, y=18
+XOR-261: x=8, y=26
+XOR-262: x=1, y=1
+XOR-263: x=1, y=6
+XOR-264: x=9, y=19
+XOR-265: x=10, y=12
+AND-266: x=0, y=18
+AND-267: x=0, y=26
+AND-268: x=21.5, y=14
+AND-269: x=14, y=25
+AND-270: x=6, y=19
+AND-271: x=10, y=10
+AND-272: x=14, y=11
+AND-273: x=23, y=22
+XOR-274: x=6, y=11
+XOR-275: x=0, y=10
+XOR-276: x=16, y=15
+XOR-277: x=0, y=12
+XOR-278: x=21, y=27
+XOR-279: x=26, y=10
+XOR-280: x=25, y=23
+XOR-281: x=23, y=15
+XOR-282: x=11, y=16
+XOR-283: x=10, y=21
+XOR-284: x=9, y=3
+XOR-285: x=13, y=2
+XOR-286: x=6, y=23
+XOR-287: x=5, y=12
+XOR-288: x=1, y=23
 XOR-289: x=1, y=11
-XOR-290: x=0, y=22
-XOR-293: x=16, y=5
-XOR-296: x=8, y=29
-XOR-299: x=3, y=28
-XOR-302: x=22, y=4
-XOR-305: x=12, y=1
-XOR-308: x=0, y=6
-XOR-311: x=6, y=6
-XOR-314: x=6, y=19
-XOR-315: x=0, y=24
-XOR-316: x=11, y=3
-XOR-317: x=18, y=18
-XOR-318: x=3, y=8
-XOR-319: x=8, y=8
-XOR-320: x=22, y=25
-XOR-321: x=1, y=14
-XOR-338: x=1, y=18
-XOR-339: x=11, y=23
-XOR-340: x=13, y=28
-XOR-341: x=10, y=13
-XOR-342: x=17, y=3
-XOR-343: x=0, y=10
-XOR-344: x=5, y=4
-XOR-345: x=16, y=0
-XOR-346: x=13, y=8
-XOR-347: x=0, y=17
-XOR-348: x=6, y=3
-XOR-349: x=16, y=2
-XOR-350: x=1, y=3
-XOR-351: x=13, y=22
-XOR-352: x=14, y=27
-XOR-353: x=11, y=11
-XOR-354: x=10, y=17
-XOR-367: x=0, y=25
-XOR-380: x=11, y=4
-XOR-393: x=17, y=1
-XOR-406: x=0, y=7
-XOR-419: x=8, y=16
-XOR-432: x=22, y=26
-XOR-445: x=1, y=12
-NOT-554: x=15, y=5
-NOT-555: x=31, y=2
-NOT-556: x=24, y=14
-NOT-557: x=22, y=2
-NOT-558: x=22, y=7
-NOT-559: x=22, y=1
-NOT-560: x=21, y=4
-NOT-561: x=23, y=1
-NOT-562: x=21, y=0
-NOT-563: x=27, y=10
-NOT-564: x=21, y=14
-NOT-565: x=22, y=11
-NOT-566: x=16, y=19
-NOT-567: x=17, y=14
-NOT-568: x=23, y=18
-NOT-569: x=25, y=23
-NOT-570: x=16, y=17
-NOT-571: x=19, y=15
-NOT-572: x=21, y=17
-NOT-573: x=21, y=11
-NOT-574: x=25, y=29
-NOT-575: x=19, y=17
-NOT-576: x=20, y=24
-NOT-577: x=27, y=26
-NOT-578: x=18, y=29
-NOT-579: x=27, y=24
-NOT-580: x=19, y=24
-NOT-581: x=16, y=24
-NOT-582: x=18, y=20
-NOT-583: x=24, y=10
-NOT-584: x=25, y=10
-NOT-585: x=25, y=14
-NOT-586: x=19, y=9
-NOT-587: x=27, y=6
-NOT-588: x=10, y=23
-NOT-589: x=13, y=20
-NOT-590: x=23, y=14
-NOT-591: x=20, y=17
-NOT-592: x=19, y=20
-NOT-593: x=15, y=17
-AND-594: x=26, y=5
-AND-595: x=22, y=3
-AND-596: x=23, y=0
-AND-597: x=25.5, y=13
-AND-598: x=21, y=24
-AND-599: x=24, y=27
-AND-600: x=19, y=23
-AND-601: x=26, y=14
-OR-602: x=23, y=2
-OR-607: x=24, y=22
-AND-620: x=15, y=13
-AND-625: x=24, y=16
-AND-630: x=20, y=15
-AND-635: x=23, y=11
-AND-640: x=24, y=7
-AND-645: x=12, y=21
-AND-650: x=22, y=17
-AND-655: x=22, y=19
-AND-692: x=15, y=18
-AND-693: x=3, y=20
-AND-694: x=6, y=20
-AND-695: x=18, y=8
-AND-696: x=24, y=6
-AND-697: x=16, y=15
-AND-698: x=11, y=14
-AND-699: x=18, y=6
-AND-700: x=10, y=24
-AND-701: x=10, y=25
-AND-702: x=18, y=22
-AND-703: x=14, y=25
-AND-704: x=10, y=22
-AND-705: x=8, y=14
-AND-706: x=8, y=2
-AND-707: x=16, y=23
-AND-708: x=6, y=12
-AND-709: x=0, y=8
-AND-710: x=19, y=12
-AND-711: x=28, y=10
-AND-712: x=0, y=16
-AND-713: x=11, y=27
-AND-714: x=14, y=20
-AND-715: x=0, y=28
-AND-716: x=18, y=14
-AND-717: x=18, y=10
-AND-718: x=22.5, y=13
-AND-719: x=21, y=10
-AND-720: x=0, y=20
-AND-721: x=13, y=24
-AND-722: x=21, y=22
-AND-723: x=6, y=18
-XOR-724: x=10, y=18
-XOR-725: x=5, y=24
-XOR-726: x=3, y=16
-XOR-727: x=17, y=19
-XOR-728: x=27, y=12
-XOR-729: x=5, y=15
-XOR-730: x=11, y=15
-XOR-731: x=21, y=5
-XOR-732: x=6, y=21
-XOR-733: x=6, y=27
-XOR-734: x=20, y=29
-XOR-735: x=19, y=27
-XOR-736: x=13, y=26
-XOR-737: x=8, y=28
-XOR-738: x=1, y=0
-XOR-739: x=17, y=25
-XOR-740: x=9, y=12
-XOR-741: x=0, y=4
-XOR-742: x=16, y=11
-XOR-743: x=27, y=8
-XOR-744: x=0, y=2
-XOR-745: x=12, y=10
-XOR-746: x=14, y=16
-XOR-747: x=1, y=26
-XOR-748: x=15, y=7
-XOR-749: x=20, y=9
-XOR-750: x=22, y=12
-XOR-751: x=22, y=8
-XOR-752: x=0, y=5
-XOR-753: x=11, y=19
-XOR-754: x=19.5, y=21
-XOR-755: x=5, y=13
+XOR-290: x=20, y=29
+XOR-293: x=5, y=28
+XOR-296: x=18, y=0
+XOR-299: x=0, y=7
+XOR-302: x=0, y=14
+XOR-305: x=12, y=23
+XOR-308: x=1, y=5
+XOR-311: x=9, y=17
+XOR-314: x=5, y=10
+XOR-315: x=11, y=13
+XOR-316: x=24, y=12
+XOR-317: x=26, y=24
+XOR-318: x=11, y=27
+XOR-319: x=6, y=1
+XOR-320: x=5, y=21
+XOR-321: x=1, y=17
+XOR-338: x=3, y=26
+XOR-339: x=12, y=9
+XOR-340: x=17, y=24
+XOR-341: x=5, y=25
+XOR-342: x=0, y=19
+XOR-343: x=0, y=28
+XOR-344: x=1, y=13
+XOR-345: x=10, y=28
+XOR-346: x=0, y=21
+XOR-347: x=0, y=27
+XOR-348: x=21, y=10
+XOR-349: x=26, y=26
+XOR-350: x=1, y=29
+XOR-351: x=8, y=7
+XOR-352: x=17, y=9
+XOR-353: x=0, y=22
+XOR-354: x=0, y=25
+XOR-367: x=13, y=26
+XOR-380: x=24, y=9
+XOR-393: x=26, y=22
+XOR-406: x=8, y=29
+XOR-419: x=11, y=5
+XOR-432: x=15, y=12
+XOR-445: x=0, y=20
+NOT-554: x=23, y=19
+NOT-555: x=21, y=16
+NOT-556: x=22, y=21
+NOT-557: x=26, y=11
+NOT-558: x=20, y=12
+NOT-559: x=20.5, y=14
+NOT-560: x=25, y=5
+NOT-561: x=23, y=9
+NOT-562: x=26, y=6
+NOT-563: x=15, y=21
+NOT-564: x=16, y=16
+NOT-565: x=24, y=16
+NOT-566: x=7, y=5
+NOT-567: x=10, y=16
+NOT-568: x=22, y=16
+NOT-569: x=17, y=23
+NOT-570: x=20.5, y=7
+NOT-571: x=19, y=10
+NOT-572: x=22, y=24
+NOT-573: x=17, y=25
+NOT-574: x=14, y=6
+NOT-575: x=20, y=16
+NOT-576: x=22, y=6
+NOT-577: x=21, y=18
+NOT-578: x=23, y=16
+NOT-579: x=25, y=24
+NOT-580: x=19, y=3
+NOT-581: x=20, y=3
+NOT-582: x=23, y=24
+NOT-583: x=18, y=25
+NOT-584: x=18, y=26
+NOT-585: x=16, y=24
+NOT-586: x=6, y=5
+NOT-587: x=16, y=5
+NOT-588: x=10, y=9
+NOT-589: x=15, y=10
+NOT-590: x=25, y=11
+NOT-591: x=22, y=9
+NOT-592: x=6, y=14
+NOT-593: x=14, y=10
+AND-594: x=22, y=18
+AND-595: x=16, y=13
+AND-596: x=24, y=3
+AND-597: x=17, y=19
+AND-598: x=16, y=6
+AND-599: x=24.5, y=14
+AND-600: x=22.5, y=4
+AND-601: x=18, y=23
+OR-602: x=17, y=17
+OR-607: x=17, y=11
+AND-620: x=10, y=20
+AND-625: x=17.5, y=20
+AND-630: x=21.5, y=7
+AND-635: x=20, y=25
+AND-640: x=15, y=4
+AND-645: x=13, y=7
+AND-650: x=22, y=8
+AND-655: x=13, y=14
+AND-692: x=6, y=17
+AND-693: x=10, y=25
+AND-694: x=27, y=28
+AND-695: x=28, y=15
+AND-696: x=25, y=17
+AND-697: x=8, y=5
+AND-698: x=19, y=26
+AND-699: x=13, y=24
+AND-700: x=23, y=6
+AND-701: x=5, y=3
+AND-702: x=18, y=2
+AND-703: x=10, y=2
+AND-704: x=1, y=3
+AND-705: x=21, y=12
+AND-706: x=27, y=6
+AND-707: x=7, y=9
+AND-708: x=22, y=26
+AND-709: x=7, y=16
+AND-710: x=5, y=7
+AND-711: x=8, y=24
+AND-712: x=16, y=10
+AND-713: x=18, y=18
+AND-714: x=14, y=19
+AND-715: x=17, y=16
+AND-716: x=17, y=5
+AND-717: x=21, y=3
+AND-718: x=11, y=0
+AND-719: x=7, y=4
+AND-720: x=14, y=17
+AND-721: x=11, y=11
+AND-722: x=11, y=6
+AND-723: x=10, y=18
+XOR-724: x=6, y=15
+XOR-725: x=12, y=22
+XOR-726: x=26, y=27
+XOR-727: x=26, y=16
+XOR-728: x=24, y=19
+XOR-729: x=6, y=6
+XOR-730: x=22, y=28
+XOR-731: x=16, y=27
+XOR-732: x=20, y=5
+XOR-733: x=1, y=9
+XOR-734: x=17, y=1
+XOR-735: x=11, y=1
+XOR-736: x=0, y=2
+XOR-737: x=22, y=13
+XOR-738: x=26, y=5
+XOR-739: x=5, y=20
+XOR-740: x=23, y=21
+XOR-741: x=7, y=14
+XOR-742: x=11, y=8
+XOR-743: x=1, y=24
+XOR-744: x=16, y=8
+XOR-745: x=11, y=15
+XOR-746: x=6, y=27
+XOR-747: x=17, y=21
+XOR-748: x=14, y=3
+XOR-749: x=23, y=2
+XOR-750: x=5, y=0
+XOR-751: x=2, y=4
+XOR-752: x=17, y=22
+XOR-753: x=1, y=15
+XOR-754: x=5, y=2
+XOR-755: x=5, y=18
 -------------------Chip Layout----------------------
 
------- Row 0 : width 29 ------
-| INP-93 | XOR-738 | XOR-261 | XOR-279 | XOR-345 | NOT-562 | OUTP-731 | AND-596 | 
+------ Row 0 : width 23 ------
+| XOR-256 | XOR-750 | OUTP-735 | AND-718 | OUTP-748 | OUTP-734 | INP-53 | INP-101 | XOR-296 | 
 
------- Row 1 : width 24 ------
-| OUTP-752 | OUTP-738 | XOR-283 | XOR-284 | XOR-305 | XOR-393 | NOT-559 | NOT-561 | 
+------ Row 1 : width 27 ------
+| OUTP-736 | XOR-262 | XOR-319 | XOR-735 | OUTP-732 | XOR-734 | XOR-255 | 
 
------- Row 2 : width 32 ------
-| XOR-744 | INP-131 | OUTP-744 | INP-113 | AND-706 | XOR-260 | XOR-349 | INP-89 | NOT-557 | OR-602 | NOT-555 | 
+------ Row 2 : width 29 ------
+| XOR-736 | XOR-754 | AND-703 | XOR-285 | AND-702 | OUTP-749 | INP-57 | XOR-749 | INP-45 | 
 
------- Row 3 : width 28 ------
-| OUTP-741 | XOR-350 | XOR-348 | XOR-316 | INP-73 | XOR-342 | AND-595 | 
+------ Row 3 : width 30 ------
+| OUTP-733 | AND-704 | OUTP-750 | AND-701 | INP-121 | XOR-284 | XOR-748 | NOT-580 | NOT-581 | AND-717 | AND-596 | 
 
------- Row 4 : width 27 ------
-| XOR-741 | XOR-344 | INP-97 | XOR-380 | XOR-253 | NOT-560 | XOR-302 | 
+------ Row 4 : width 29.5 ------
+| INP-117 | INP-33 | XOR-751 | AND-719 | XOR-257 | AND-640 | AND-600 | OUTP-738 | 
 
------- Row 5 : width 32 ------
-| XOR-752 | AND-268 | INP-117 | INP-136 | XOR-264 | NOT-554 | XOR-293 | XOR-731 | AND-594 | 
+------ Row 5 : width 31 ------
+| OUTP-754 | XOR-308 | NOT-586 | NOT-566 | AND-697 | XOR-419 | NOT-587 | AND-716 | XOR-732 | NOT-560 | XOR-738 | 
 
------- Row 6 : width 28 ------
-| XOR-308 | INP-69 | XOR-311 | INP-85 | XOR-278 | INP-132 | AND-699 | AND-269 | AND-696 | NOT-587 | 
+------ Row 6 : width 30 ------
+| OUTP-751 | XOR-263 | XOR-729 | AND-722 | NOT-574 | INP-21 | AND-598 | NOT-576 | AND-700 | NOT-562 | AND-706 | 
 
------- Row 7 : width 31.5 ------
-| XOR-406 | XOR-262 | XOR-258 | XOR-748 | INP-41 | INP-109 | NOT-558 | INP-121 | AND-640 | 
+------ Row 7 : width 29 ------
+| XOR-299 | AND-710 | XOR-351 | AND-645 | NOT-570 | AND-630 | 
 
------- Row 8 : width 32 ------
-| AND-709 | XOR-318 | XOR-319 | XOR-346 | AND-695 | OUTP-743 | XOR-751 | XOR-743 | 
+------ Row 8 : width 29.5 ------
+| INP-37 | INP-105 | INP-109 | OUTP-742 | OUTP-729 | XOR-254 | INP-97 | XOR-742 | XOR-744 | OUTP-744 | AND-650 | 
 
------- Row 9 : width 31 ------
-| INP-81 | XOR-263 | XOR-282 | OUTP-745 | OUTP-748 | INP-101 | XOR-285 | NOT-586 | XOR-749 | XOR-259 | OUTP-751 | 
+------ Row 9 : width 29 ------
+| INP-137 | XOR-733 | INP-69 | AND-707 | NOT-588 | INP-134 | XOR-339 | XOR-352 | NOT-591 | NOT-561 | XOR-380 | 
 
 ------ Row 10 : width 31 ------
-| XOR-343 | AND-270 | INP-65 | AND-273 | XOR-745 | OUTP-755 | AND-717 | AND-719 | NOT-583 | NOT-584 | OUTP-728 | NOT-563 | AND-711 | 
+| XOR-275 | XOR-314 | AND-271 | INP-85 | NOT-593 | NOT-589 | AND-712 | NOT-571 | INP-135 | XOR-348 | XOR-279 | 
 
------- Row 11 : width 31.5 ------
-| INP-77 | XOR-289 | XOR-265 | XOR-353 | XOR-742 | NOT-573 | NOT-565 | AND-635 | OUTP-750 | 
+------ Row 11 : width 28 ------
+| OUTP-753 | XOR-289 | XOR-274 | AND-721 | AND-272 | OR-607 | NOT-590 | NOT-557 | INP-41 | 
 
------- Row 12 : width 32 ------
-| INP-125 | XOR-445 | AND-708 | XOR-740 | XOR-252 | AND-710 | XOR-750 | XOR-728 | 
+------ Row 12 : width 29 ------
+| XOR-277 | XOR-287 | XOR-265 | XOR-432 | NOT-558 | AND-705 | XOR-316 | 
 
------- Row 13 : width 31.5 ------
-| XOR-288 | XOR-755 | XOR-341 | AND-620 | AND-718 | AND-597 | 
+------ Row 13 : width 27 ------
+| INP-49 | XOR-344 | XOR-259 | XOR-315 | AND-595 | XOR-737 | 
 
------- Row 14 : width 32 ------
-| INP-21 | XOR-321 | OUTP-729 | OUTP-740 | AND-705 | AND-698 | INP-105 | INP-25 | OUTP-742 | NOT-567 | AND-716 | NOT-564 | OUTP-749 | NOT-590 | NOT-556 | NOT-585 | AND-601 | 
+------ Row 14 : width 30.5 ------
+| XOR-302 | INP-73 | NOT-592 | XOR-741 | OUTP-741 | AND-655 | NOT-559 | AND-268 | AND-599 | 
 
------- Row 15 : width 27.5 ------
-| XOR-276 | XOR-729 | INP-1 | XOR-730 | AND-697 | NOT-571 | AND-630 | 
+------ Row 15 : width 31 ------
+| OUTP-724 | XOR-753 | XOR-724 | XOR-745 | XOR-276 | INP-65 | INP-131 | XOR-281 | AND-695 | 
 
------- Row 16 : width 31.5 ------
-| AND-712 | XOR-726 | XOR-419 | OUTP-746 | XOR-746 | XOR-280 | AND-625 | 
+------ Row 16 : width 31 ------
+| XOR-258 | INP-61 | INP-81 | AND-709 | NOT-567 | XOR-282 | NOT-564 | AND-715 | NOT-575 | NOT-555 | NOT-568 | NOT-578 | NOT-565 | OUTP-737 | XOR-727 | 
 
------- Row 17 : width 29.5 ------
-| XOR-347 | INP-129 | AND-266 | INP-57 | XOR-354 | NOT-593 | NOT-570 | OUTP-727 | INP-29 | NOT-575 | NOT-591 | NOT-572 | AND-650 | 
+------ Row 17 : width 28 ------
+| INP-125 | XOR-321 | AND-692 | XOR-311 | AND-720 | OR-602 | AND-696 | 
 
------- Row 18 : width 29 ------
-| OUTP-726 | XOR-338 | AND-723 | OUTP-730 | XOR-724 | AND-692 | XOR-317 | NOT-568 | XOR-286 | 
+------ Row 18 : width 28 ------
+| AND-266 | OUTP-755 | INP-133 | XOR-755 | AND-723 | XOR-260 | AND-713 | NOT-577 | AND-594 | 
 
------- Row 19 : width 29.5 ------
-| AND-267 | INP-53 | INP-133 | INP-37 | XOR-314 | XOR-753 | NOT-566 | XOR-727 | AND-655 | 
+------ Row 19 : width 30 ------
+| XOR-342 | OUTP-739 | AND-270 | XOR-264 | AND-714 | AND-597 | NOT-554 | XOR-728 | OUTP-740 | 
 
------- Row 20 : width 27 ------
-| AND-720 | AND-693 | AND-694 | OUTP-724 | INP-49 | OUTP-753 | OUTP-732 | NOT-589 | AND-714 | INP-137 | NOT-582 | NOT-592 | OUTP-734 | XOR-287 | INP-134 | 
+------ Row 20 : width 31 ------
+| XOR-445 | XOR-739 | AND-620 | AND-625 | OUTP-727 | XOR-251 | 
 
------- Row 21 : width 27.5 ------
-| INP-130 | XOR-250 | XOR-732 | INP-13 | AND-645 | XOR-754 | AND-271 | 
+------ Row 21 : width 28 ------
+| XOR-346 | XOR-320 | XOR-283 | NOT-563 | OUTP-752 | XOR-747 | NOT-556 | XOR-740 | 
 
------- Row 22 : width 32 ------
-| XOR-290 | XOR-251 | AND-704 | XOR-351 | AND-702 | AND-722 | OR-607 | 
+------ Row 22 : width 31 ------
+| XOR-353 | INP-17 | INP-93 | XOR-252 | XOR-725 | XOR-752 | INP-136 | AND-273 | XOR-393 | 
 
------- Row 23 : width 26 ------
-| XOR-277 | XOR-274 | NOT-588 | XOR-339 | AND-707 | AND-600 | NOT-569 | 
+------ Row 23 : width 30 ------
+| INP-129 | XOR-288 | XOR-286 | INP-113 | XOR-305 | NOT-569 | AND-601 | OUTP-728 | XOR-280 | 
 
------- Row 24 : width 28 ------
-| XOR-315 | XOR-725 | AND-700 | AND-721 | NOT-581 | OUTP-747 | INP-17 | NOT-580 | NOT-576 | AND-598 | NOT-579 | 
+------ Row 24 : width 31 ------
+| OUTP-743 | XOR-743 | OUTP-746 | INP-89 | AND-711 | OUTP-745 | OUTP-725 | AND-699 | NOT-585 | XOR-340 | NOT-572 | NOT-582 | INP-29 | NOT-579 | XOR-317 | 
 
------- Row 25 : width 27 ------
-| XOR-367 | XOR-257 | AND-701 | INP-61 | AND-703 | XOR-739 | XOR-320 | 
+------ Row 25 : width 27.5 ------
+| XOR-354 | XOR-341 | AND-693 | INP-132 | AND-269 | NOT-573 | NOT-583 | INP-13 | AND-635 | 
 
------- Row 26 : width 29 ------
-| OUTP-725 | XOR-747 | XOR-275 | INP-9 | INP-45 | XOR-736 | OUTP-735 | AND-272 | XOR-432 | NOT-577 | OUTP-754 | 
+------ Row 26 : width 31 ------
+| AND-267 | XOR-338 | XOR-261 | XOR-367 | NOT-584 | AND-698 | AND-708 | INP-9 | XOR-349 | 
 
------- Row 27 : width 30 ------
-| INP-33 | XOR-256 | XOR-733 | AND-713 | XOR-352 | XOR-735 | AND-599 | 
+------ Row 27 : width 31 ------
+| XOR-347 | OUTP-747 | XOR-746 | XOR-318 | XOR-731 | XOR-278 | XOR-726 | 
 
------- Row 28 : width 25 ------
-| AND-715 | XOR-299 | XOR-737 | XOR-340 | OUTP-736 | OUTP-739 | XOR-281 | 
+------ Row 28 : width 30 ------
+| XOR-343 | XOR-293 | XOR-345 | INP-5 | XOR-253 | OUTP-726 | XOR-730 | AND-694 | 
 
 ------ Row 29 : width 26 ------
-| XOR-254 | OUTP-733 | INP-5 | OUTP-737 | XOR-296 | XOR-255 | NOT-578 | INP-135 | XOR-734 | NOT-574 | 
+| INP-130 | XOR-350 | INP-77 | INP-1 | XOR-406 | XOR-250 | OUTP-731 | INP-25 | XOR-290 | OUTP-730 | 
 -----------------------------------------------------

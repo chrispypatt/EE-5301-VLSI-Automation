@@ -7,38 +7,38 @@ Bounding Chip dimensions: 5x5
 Actual Chip area: 25
 Actual Chip dimensions: 5x5
 
-Initial HPWL: 40
-After Annealing HPWL: 21
-Annealing Execution Time: 0.169839s
+Initial HPWL: 42
+After Annealing HPWL: 23
+Annealing Execution Time: 0.117182s
 
 -------------------Gate Info----------------------
 INP-n1: x=0, y=0
-INP-n2: x=0, y=4
-INP-n3: x=0, y=1
-INP-n6: x=1, y=1
-INP-n7: x=3, y=2
+INP-n2: x=1, y=2
+INP-n3: x=2, y=1
+INP-n6: x=3, y=3
+INP-n7: x=1, y=4
 OUTP-n22: x=0, y=2
-OUTP-n23: x=1, y=4
+OUTP-n23: x=0, y=4
 NAND-n10: x=1, y=0
-NAND-n11: x=2, y=1
-NAND-n16: x=0, y=3
-NOR-n19: x=2, y=3
-NAND-n22: x=1, y=2
-NOR-n23: x=2, y=4
+NAND-n11: x=3, y=1
+NAND-n16: x=2, y=2
+NOR-n19: x=2, y=4
+NAND-n22: x=0, y=1
+NOR-n23: x=0, y=3
 -------------------Chip Layout----------------------
 
 ------ Row 0 : width 3 ------
 | INP-n1 | NAND-n10 | 
 
------- Row 1 : width 4 ------
-| INP-n3 | INP-n6 | NAND-n11 | 
+------ Row 1 : width 5 ------
+| NAND-n22 | INP-n3 | NAND-n11 | 
 
 ------ Row 2 : width 4 ------
-| OUTP-n22 | NAND-n22 | INP-n7 | 
+| OUTP-n22 | INP-n2 | NAND-n16 | 
 
------- Row 3 : width 5 ------
-| NAND-n16 | NOR-n19 | 
+------ Row 3 : width 4 ------
+| NOR-n23 | INP-n6 | 
 
 ------ Row 4 : width 5 ------
-| INP-n2 | OUTP-n23 | NOR-n23 | 
+| OUTP-n23 | INP-n7 | NOR-n19 | 
 -----------------------------------------------------
