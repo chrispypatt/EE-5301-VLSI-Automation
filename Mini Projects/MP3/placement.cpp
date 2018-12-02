@@ -116,14 +116,14 @@ void Chip::find_placement(){
 			// found (…A…B…, …A…B…), add wB weight from A->B to Gh
 			if (neg_index[pos_loci[i]] < neg_index[pos_loci[j]]){
 				//weight = xb-xa
-				double weight = circuit.modules[pos_loci[j]]->height;
-				Gv.has_incoming[pos_loci[i]] = true;
-				Gv.addEdge(pos_loci[j],pos_loci[i], weight);
-			}else{// found (…A…B…, …B…A…), add hB weight from B->A to Gv
-				//weight = ya-yb
 				double weight = circuit.modules[pos_loci[i]]->width;
 				Gh.has_incoming[pos_loci[j]] = true;
 				Gh.addEdge(pos_loci[i],pos_loci[j], weight);
+			}else{// found (…A…B…, …B…A…), add hB weight from B->A to Gv
+				//weight = ya-yb
+				double weight = circuit.modules[pos_loci[j]]->height;
+				Gv.has_incoming[pos_loci[i]] = true;
+				Gv.addEdge(pos_loci[j],pos_loci[i], weight);
 			}
 		}
 	}
