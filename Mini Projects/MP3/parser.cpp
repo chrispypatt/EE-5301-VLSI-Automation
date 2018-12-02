@@ -1,18 +1,9 @@
-#include <stdio.h>
-#include <string>
-#include <cstring>
-#include <queue> 
-#include <map> 
-#include <boost/algorithm/string.hpp>
-
-using namespace std;
-
 #include "helpers.h" 
 #include "parser.h"
 
 		
 void Circuit::parseNetlist(string file_name){
-	// cout << endl << "Parsing file: " << file_name << endl;
+	cout << endl << "Parsing netlist from file: " << file_name << endl;
 	string file_line;
 	ifstream inFile;
 
@@ -48,11 +39,8 @@ void Circuit::parseNetlist(string file_name){
 		createEdge(file_line); 
 	}
     inFile.close();
-	cout << "Parsing completed!" << endl;
-	cout << "Module Count: " << module_count << " Hyper-edge Count: " << edge_count << endl;
+	cout << "Parsing completed!" << endl << endl;
 }
-
-
 
 /*////////////////////////////////////////////////////////////////////////////////*/
 /*																		  		  */			

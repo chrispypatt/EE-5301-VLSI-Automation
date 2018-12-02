@@ -1,18 +1,20 @@
 //parser.h
-#include <stdio.h>
 #include <iostream> 
 #include <fstream>
 #include <string>
 #include <queue>
 #include <map> 
+#include <boost/algorithm/string.hpp>
+
+using namespace std;
 
 class HyperEdge{
 	public:
 	int degree;
 	vector <string> edge_modules; //vector of modules connected by this hyper-edge
-	HyperEdge(int d, vector<string> e){
-		degree = d;
-		edge_modules = e;
+	HyperEdge(int _degree, vector<string> _edge_modules){
+		degree = _degree;
+		edge_modules = _edge_modules;
 	}
 };
 
@@ -20,16 +22,16 @@ class Module {
 	public:
     string name;
     vector <HyperEdge> edges; //all hyperedges for this module 
-	double height, width, area;
+	double height, width, area, x_left, y_bottom;
 
 	Module(){
 		
 	}
-	Module(string n, double w, double h) {
-		name = n;
-		width = w;
-		height = h;
-		area = h*w;
+	Module(string _name, double _width, double _height) {
+		name = _name;
+		width = _width;
+		height = _height;
+		area = _height*_width;
 	}
 	void addHyperEdge(HyperEdge edge){
 		edges.push_back(edge);

@@ -1,27 +1,7 @@
-#include <stdio.h>
-// #include <cstdlib>
-// #include <iostream> 
-// #include <string>
-// #include <queue> 
-// #include <map> 
-// #include <vector>
-// #include <limits>
-// #include <sys/stat.h> 
-// #include <sys/types.h> 
-// #include <random>
-// #include <algorithm>
-// #include <cstring>
-
-
-// #include <time.h>
-
-
-using namespace std;
-
 #include "parser.h"
-#include "placement.h"
 #include "helpers.h"
-
+#include "graph.h"
+#include "placement.h"
 
 int main(int argc, char *argv[]){
 	Circuit circuit;
@@ -30,8 +10,11 @@ int main(int argc, char *argv[]){
 
 	string file_name = argv[1];
 	circuit.parseNetlist(file_name);
-	chip.init_chip(circuit);
 
+	//initialize netlist placement on chip
+	chip = Chip(circuit);
+
+	chip.write(file_name,0.0);
 
 	// mkdir("output", 0777);
     //argc is number of args
@@ -75,58 +58,113 @@ int main(int argc, char *argv[]){
     return(0);
 }
 
-void Chip::init_chip(Circuit ckt){
+Chip::Chip(Circuit ckt){
 	cout << "Placing modules on chip" << "..." << endl;
 	circuit = ckt; //save input circuit in our chip for future reference
 
-	// NUM_MOVES_PER_STEP = ckt.nodes_queue.size(); //Do # gates amount of moves per temp step
+	NUM_MOVES_PER_STEP = ckt.module_keys.size(); //Do # modules amount of moves per temp step
 
-	// //Make our grid layout
-	// double total_area = ckt.total_gates_area;
-	// double width = ceil(sqrt(total_area));
-	// double height = ceil(total_area/width);
-	// chip_layout = Chip_Layout(height,width);
+	// //setup vector of module keys for random placement
+	vector<string> module_rp, module_rn;
+	for (auto elem: ckt.modules) {
+		string key = elem.first;
+		module_rp.push_back(key);
+		module_rn.push_back(key);
+	}
 
-	// //setup vector of nodes for random placement
-	// vector<node*> nodes_r;
-	// for (auto elem: ckt.nodes) {
-	// 	node *n = elem.second;
-	// 	nodes_r.push_back(n);
-	// }
 	// default_random_engine rng(time(NULL)); 
-	// // default_random_engine rng(0);//rng(time(NULL)); //use this for reapeatability
+	default_random_engine rng(0);//use this for reapeatability
+	shuffle(begin(module_rp), std::end(module_rp), rng);
+	shuffle(begin(module_rn), std::end(module_rn), rng);
 
-	// shuffle(begin(nodes_r), std::end(nodes_r), rng);
+	//initalize data structures
+	Gh = Graph(ckt.module_keys.size());
+	Gv = Graph(ckt.module_keys.size());
 
-	// //fill layout randomly  with our gates
-	// while(!nodes_r.empty()){
-	// 	node *n = nodes_r.back();
-	// 	bool placed = false;
+	int index = 0;
+	while(!module_rp.empty()){
+		string key_p = module_rp.back();
+		string key_n = module_rn.back();
 
-	// 	//TODO: Faster way of initialization placeing
-	// 	//Keep track of row with least width in case node cant fit in any row.
-	// 	double min_width = chip_layout.width*width;
-	// 	int min_row;
-	// 	//place in next open spot of layout
-	// 	for (int i=0; i<chip_layout.height; i++){
-	// 		if ((chip_layout.rows[i].curr_width + n->width) < chip_layout.width){
-	// 			chip_layout.gate_pushback(*n,(double)i);
-	// 			placed = true;
-	// 			break;
-	// 		}
-	// 		if (chip_layout.rows[i].curr_width < min_width){
-	// 			min_width = chip_layout.rows[i].curr_width;
-	// 			min_row = i;
-	// 		}
-	// 	}
-	// 	if (!placed){//no more room on chip. We will create an almost square of nodes
-	// 		//put this poor orphan in the shortest row
-	// 		chip_layout.gate_pushback(*n,(double)min_row);
-	// 	}
-	// 	nodes_r.pop_back();
-	// } 
+		//set up positive and negative loci
+		pos_loci.push_back(key_p);
+		neg_loci.push_back(key_n);
+		pos_index[key_p] = index;
+		neg_index[key_n] = index;
+		Gv.has_incoming[key_p] = false;
+		Gh.has_incoming[key_p] = false;
+
+		index++;
+		module_rp.pop_back();
+		module_rn.pop_back();
+	} 
+
+	find_placement();
+
 	// chip_layout.calculate_wire_lengths();
 	// chip_layout.starting_HPWL = chip_layout.total_HPWL;
+	cout << "Initial placement completed!" << endl << endl;
+}
+
+
+void Chip::find_placement(){
+	height = 0;
+	width = 0;
+	for(int i = 0; i < pos_loci.size(); i++){ //get A in positive loci
+		for(int j = i+1; j < pos_loci.size(); j++){//get B in positive loci
+			//check the order of these two locus in the negative loci vector
+			// found (…A…B…, …A…B…), add wB weight from A->B to Gh
+			if (neg_index[pos_loci[i]] < neg_index[pos_loci[j]]){
+				//weight = xb-xa
+				double weight = circuit.modules[pos_loci[j]]->height;
+				Gv.has_incoming[pos_loci[i]] = true;
+				Gv.addEdge(pos_loci[j],pos_loci[i], weight);
+			}else{// found (…A…B…, …B…A…), add hB weight from B->A to Gv
+				//weight = ya-yb
+				double weight = circuit.modules[pos_loci[i]]->width;
+				Gh.has_incoming[pos_loci[j]] = true;
+				Gh.addEdge(pos_loci[i],pos_loci[j], weight);
+			}
+		}
+	}
+
+	//add edge with weight 0 from s to all nodes without an incoming edge
+	for (auto elem: Gv.has_incoming){
+		if (!elem.second){
+			Gv.addEdge("S", elem.first, 0.0);
+		}
+	}
+	for (auto elem: Gh.has_incoming){
+		if (!elem.second){
+			Gh.addEdge("S", elem.first, 0.0);
+		}
+	}
+
+	//run our longest path algorithm to get x and y positions
+	map<string,double> y_positions = Gv.longestPath("S");
+	map<string,double> x_positions = Gh.longestPath("S");
+
+	//record the x and y positions on our chip
+	for (auto elem: y_positions){
+		if (elem.first != "S"){
+			//bottom edge calculation
+			double y = elem.second + circuit.modules[elem.first]->height;
+			circuit.modules[elem.first]->y_bottom = y;
+			if (height < y){ //find furthest bottom edge
+				height = y;
+			}
+		}
+	}
+	for (auto elem: x_positions){
+		if (elem.first != "S"){
+			//left edge calculation
+			double x = elem.second;
+			circuit.modules[elem.first]->x_left = x;
+			if (width < x + circuit.modules[elem.first]->width){ //find furthest right edge
+				width = x+ circuit.modules[elem.first]->width;
+			}
+		}
+	}
 }
 
 /*//////////////////////END Chip Layout////////////////////////////////////////////*/
@@ -260,101 +298,84 @@ void Chip::init_chip(Circuit ckt){
 /*																				  */
 /*////////////////////////////////////////////////////////////////////////////////*/
 
-// void Chip::print_chip(double seconds){
-// 	cout << "-------------------Chip Info----------------------" << endl;
-// 	cout << endl << "Bounding Chip area: " << chip_layout.width*chip_layout.height << endl;
-// 	cout << "Bounding Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl << endl;
-// 	if (seconds > 0) {
-// 		cout << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
-// 		cout << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
-// 	}
-// 	cout << "Initial HPWL: " << chip_layout.starting_HPWL << endl;
-// 	if (seconds > 0) {
-// 		cout << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
-// 		cout << "Annealing Execution Time: " << seconds << "s" << endl << endl;
-// 	}
-// 	cout << "-------------------Gate Info----------------------" << endl;
-// 	queue<node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
-// 	while (!temp_queue.empty()){
-// 		node *n = temp_queue.front();
-// 		cout << n->name << ": ";
-// 		cout << "x=" << chip_layout.gate_coordinates[n->key].left_x;
-// 		cout << ", y=" << chip_layout.gate_coordinates[n->key].y;
-// 		cout << endl;
-// 		temp_queue.pop();
-// 	} 
-// 	cout << "-------------------Chip Layout----------------------" << endl;
-// 	//print out chip for checking
-// 	for (int i=0; i<chip_layout.height; i++){
-// 		deque<node> row = chip_layout.rows[i].row;
-// 		cout << endl << "------" << " Row " << i << " : width ";
-// 		cout << chip_layout.rows[i].curr_width << " ------" << endl << "| ";
-// 		while(!row.empty()){
-// 			node temp = row.front();
-// 			row.pop_front();
-// 			cout << temp.name << " | ";
-// 		}
-// 		cout << endl << endl;
-// 	}
-// 	cout << "-----------------------------------------------------" << endl;
-// }
+void Chip::print(double seconds){
+	cout << "-------------------Chip Info----------------------" << endl << endl;
+	cout << "Module Count: " << circuit.module_count << endl;
+	cout << "Chip width: " << width << " height: " << height << endl;
+	cout << "Chip area: " << width*height << endl << endl;
 
-// void Chip::write_chip(string in_file, double seconds){
-// 	//create directory for output files
-// 	string output_file;
-// 	size_t found = in_file.find_last_of("/\\");
-// 	output_file = split(in_file.substr(found+1), "."  )[0];
+	//print sequence pair (pos_loci, neg_loci)
+	cout << "SP: " << endl << "\tPositive Loci = (";
+	for (int i = 0; i < pos_loci.size(); i++){
+		cout << pos_loci[i];
+		if(i < pos_loci.size()-1){
+			cout << " ";
+		}
+	}
+	cout << ")" << endl << "\tNegative Loci = (";
+	for (int i = 0; i < neg_loci.size(); i++){
+		cout << neg_loci[i];
+		if(i < neg_loci.size()-1){
+			cout << " ";
+		}
+	}
+	cout << ")" << endl << endl;
 
-// 	ofstream newFile("output/chip_details_" + output_file + ".txt");
-// 	if(!newFile.is_open()){
-// 		cout << "Unable to open or create output file: " << "/output/chip_details_" << output_file << ".txt"<< endl;
-// 		exit(1); 
-// 	}else{//write out to both terminal and output file
-// 		newFile << "-------------------Chip Info----------------------" << endl;
-// 		newFile << endl << "Bounding Chip area: " << chip_layout.width*chip_layout.height << endl;
-// 		newFile << "Bounding Chip dimensions: " << chip_layout.width << "x" << chip_layout.height << endl << endl;
-// 		if (seconds > 0) {
-// 			newFile << endl << "Actual Chip area: " << chip_layout.actual_width*chip_layout.height << endl;
-// 			newFile << "Actual Chip dimensions: " << chip_layout.actual_width << "x" << chip_layout.height << endl << endl;
-// 		}
-// 		newFile << "Initial HPWL: " << chip_layout.starting_HPWL << endl;
-// 		if (seconds > 0) {
-// 			newFile << "After Annealing HPWL: " << chip_layout.total_HPWL << endl;
-// 			newFile << "Annealing Execution Time: " << seconds << "s" << endl << endl;
-// 		}
-// 		newFile << "-------------------Gate Info----------------------" << endl;
-// 		queue <node*> temp_queue = circuit.nodes_queue; //copy the original queue to the temporary queue
-// 		while (!temp_queue.empty()){
-// 			node *n = temp_queue.front();
-// 			newFile << n->name << ": ";
-// 			newFile << "x=" << chip_layout.gate_coordinates[n->key].left_x;
-// 			newFile << ", y=" << chip_layout.gate_coordinates[n->key].y;
-// 			newFile << endl;
-// 			temp_queue.pop();
-// 		} 
-// 		newFile << "-------------------Chip Layout----------------------" << endl;
-// 		//print out chip for checking
-// 		for (int i=0; i<chip_layout.height; i++){
-// 			deque<node> row = chip_layout.rows[i].row;
-// 			newFile << endl << "------" << " Row " << i << " : width ";
-// 			newFile << chip_layout.rows[i].curr_width << " ------" << endl << "| ";
-// 			while(!row.empty()){
-// 				node temp = row.front();
-// 				row.pop_front();
-// 				newFile << temp.name << " | ";
-// 			}
-// 			newFile << endl;
-// 		}
-// 		newFile << "-----------------------------------------------------" << endl;
-// 	}
-// 	cout << endl << "Output has been generated and can be found at: " << endl;
-// 	cout << "output/chip_details_" + output_file + ".txt" << endl;
-// 	if (seconds > 0) {
-// 		cout << "	&" << endl;
-// 		cout << "output/intermediate_details_" + output_file + ".txt" << endl << endl;
-// 	}
+	//print bottom left cormer of each module
+	cout << "Module\tx\ty"<< endl;
+	queue<string> m = circuit.module_keys;
+	while (!m.empty()){
+		string key = m.front();
+		m.pop();
+		cout << key << "\t" << circuit.modules[key]->x_left << "\t";
+		cout << circuit.modules[key]->y_bottom << endl;
+	}
+	cout << endl << "** Note: x and y are given for the bottom left corner of module **" << endl;	
+	cout << endl << "-----------------------------------------------------" << endl;
+}
 
-// }
+void Chip::write(string in_file, double seconds){
+	//create directory for output files
+	string output_file;
+	mkdir("output", 0777);
+	size_t found = in_file.find_last_of("/\\");
+	output_file = split(in_file.substr(found+1), "."  )[0];
+
+	ofstream newFile("output/" + output_file + "_Patterson_Christopher.out1");
+	if(!newFile.is_open()){
+		cout << "Unable to open or create output file: " << "output/" << output_file << "_Patterson_Christopher.out1"<< endl;
+		exit(1); 
+	}else{
+		newFile << "-------------------Chip Info----------------------" << endl << endl;
+		newFile << "Module Count: " << circuit.module_count << endl;
+		newFile << "Chip width: " << width << " height: " << height << endl;
+		newFile << "Chip area: " << width*height << endl << endl;
+
+		//print sequence pair (pos_loci, neg_loci)
+		newFile << "Sequence Pairs: " << endl << "\tPositive Loci = (";
+		for (int i = 0; i < pos_loci.size(); i++){
+			newFile << pos_loci[i] << " ";
+		}
+		newFile << ")" << endl << "\tNegative Loci = (";
+		for (int i = 0; i < neg_loci.size(); i++){
+			newFile << neg_loci[i] << " ";
+		}
+		newFile << ")" << endl << endl;
+
+		//print bottom left cormer of each module
+		newFile << "Module\tx\ty"<< endl;
+		queue<string> m = circuit.module_keys;
+		while (!m.empty()){
+			string key = m.front();
+			m.pop();
+			newFile << key << "\t" << circuit.modules[key]->x_left << "\t";
+			newFile << circuit.modules[key]->y_bottom << endl;
+		}
+		newFile << endl << "** Note: x and y are given for the bottom left corner of module **" << endl;	
+		newFile << endl << "-----------------------------------------------------" << endl;	
+	}
+
+}
 
 /*//////////////////////END PRINTOUT////////////////////////////////////////////*/
 
