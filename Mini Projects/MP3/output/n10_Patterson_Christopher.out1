@@ -1,24 +1,24 @@
 -------------------Chip Info----------------------
 
 Module Count: 10
-Chip width: 777 height: 697
-Chip area: 541569
+Chip width: 709 height: 784
+Chip area: 555856
 
 Sequence Pairs: 
 	Positive Loci = (7 8 9 4 5 2 3 0 6 1 )
 	Negative Loci = (7 0 1 6 8 5 3 4 9 2 )
 
 Module	x	y
-0	425	190
-1	548	105
-2	0	117
-3	217	167
-4	126	325
-5	217	296
-6	425	108
-7	0	697
-8	0	518
-9	0	313
+0	235	0
+1	434	0
+2	595	380
+3	595	213
+4	387	380
+5	387	213
+6	434	105
+7	0	0
+8	235	213
+9	387	588
 
 ** Note: x and y are given for the bottom left corner of module **
 

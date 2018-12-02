@@ -148,10 +148,10 @@ void Chip::find_placement(){
 	for (auto elem: y_positions){
 		if (elem.first != "S"){
 			//bottom edge calculation
-			double y = elem.second + circuit.modules[elem.first]->height;
+			double y = elem.second ;
 			circuit.modules[elem.first]->y_bottom = y;
-			if (height < y){ //find furthest bottom edge
-				height = y;
+			if (height < y + circuit.modules[elem.first]->height){ //find furthest top edge
+				height = y + circuit.modules[elem.first]->height;
 			}
 		}
 	}
