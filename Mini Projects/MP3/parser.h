@@ -16,25 +16,24 @@ class HyperEdge{
 		degree = _degree;
 		edge_modules = _edge_modules;
 	}
+	HyperEdge(const HyperEdge& copy){
+		degree = copy.degree;
+		edge_modules = copy.edge_modules;
+	}
 };
 
 class Module {
 	public:
     string name;
-    vector <HyperEdge> edges; //all hyperedges for this module 
-	double height, width, area, x_left, y_bottom;
+	double height, width, area, x, y;
 
 	Module(){
-		
 	}
 	Module(string _name, double _width, double _height) {
 		name = _name;
 		width = _width;
 		height = _height;
 		area = _height*_width;
-	}
-	void addHyperEdge(HyperEdge edge){
-		edges.push_back(edge);
 	}
 };
 
@@ -44,9 +43,18 @@ class Circuit {
 	map<string,Module*> modules;
 	int module_count, edge_count;
 	double total_module_area;
+	vector<HyperEdge> edges; //all hyperedges for this module 
 
-	Circuit(){
+	Circuit(){}
+	Circuit(const Circuit& copy){
+		module_keys = copy.module_keys;
+		modules = copy.modules;
+		module_count = copy.module_count;
+		edge_count = copy.edge_count;
+		total_module_area = copy.total_module_area;
+		edges = copy.edges;
 	}
+	
 	void addModule(string k, Module* b){
 		modules.insert(pair<string, Module*>(k,b));
 		module_keys.push(k);

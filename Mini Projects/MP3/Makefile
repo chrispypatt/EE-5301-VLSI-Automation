@@ -1,19 +1,32 @@
-all: placement
 
-placement: placement.o  
-	g++  placement.o parser.o helpers.o graph.o -o placement -std=c++11
+GCC        = g++
+FLAGS = -std=c++11
+ifdef dbg
+	FLAGS  += -g 
+else
+	FLAGS  += -O3
+endif
+
+EXE	        = placement
+OBJ	        = placement.o parser.o helpers.o graph.o 
+
+default: $(EXE)
 	
 placement.o: placement.cpp placement.h parser.o graph.o
-	g++ -c placement.cpp -std=c++11
+	$(GCC) -c -o $@ placement.cpp $(FLAGS)
 
 parser.o: parser.cpp parser.h helpers.o
-	g++ -c parser.cpp -std=c++11
+	$(GCC) -c -o $@ parser.cpp $(FLAGS)
 
 graph.o: graph.cpp graph.h
-	g++ -c graph.cpp -std=c++11
+	$(GCC) -c -o $@ graph.cpp $(FLAGS)
 
 helpers.o: helpers.cpp helpers.h
-	g++ -c helpers.cpp -std=c++11
+	$(GCC) -c -o $@ helpers.cpp $(FLAGS)
+
+$(EXE): $(OBJ)
+	$(GCC) $(OBJ) -o $(EXE)  $(FLAGS)
 
 clean:
-	rm placement parser.o helpers.o placement.o graph.o
+	rm -rf *.o $(EXE)
+

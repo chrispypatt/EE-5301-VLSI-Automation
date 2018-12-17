@@ -16,6 +16,8 @@ class Node{//a node for our DAGs
 		name = _name; 
 		weight = _weight; 
 	} 
+
+	double get_cost(string option);
 };
 
 class Graph { 
@@ -34,4 +36,10 @@ class Graph {
 
     void addEdge(string u, string v, double weight); 
     map<string,double> longestPath(string s); 
+
+	void destruct(){
+		node_count = 0;
+		adj_list.clear();
+		// has_incoming.clear();
+	}
 };

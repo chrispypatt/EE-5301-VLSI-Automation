@@ -1,0 +1,26 @@
+-------------------Chip Info----------------------
+
+Execution Time: 0.074338s
+Chip width: 451 height: 586
+Chip area: 264286 (initially 536537)
+Total HPWL: 19843 (initially 21316)
+
+SP: 
+	Positive Loci = (3 7 4 0 5 2 9 8 6 1)
+	Negative Loci = (9 4 1 5 6 0 8 3 7 2)
+
+Module	x	y
+0	91	325
+1	126	0
+2	349	406
+3	0	407
+4	0	196
+5	91	196
+6	299	105
+7	114	407
+8	299	213
+9	0	0
+
+** Note: x and y are given for the bottom left corner of module **
+
+-----------------------------------------------------

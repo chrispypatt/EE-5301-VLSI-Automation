@@ -66,19 +66,18 @@ void Circuit::createEdge(string file_line){
 	//read in all modules connected to this edge
 	vector <string> split_line = split(file_line, " "); // degree <module> ... <module>
 	degree = stoi(split_line[0]);
+	// cout << degree << " ";
 
 	for (int i = 1; i <= degree; i++){
 		temp_modules.push_back(split_line[i]);
+		// cout << split_line[i] << " ";
 	}
+	// cout << endl;
 
 	//create hyper-edge
 	HyperEdge temp_edge(degree,temp_modules);
+	edges.push_back(temp_edge);
 
-	//attach edge info to all interested parties
-	for (int i = 0; i < degree; i++) {
-		string key = temp_modules[i];
-		modules[key]->addHyperEdge(temp_edge);
-	}
 }
 
 /*//////////////////////END DATA STRUCTURE INIT//////////////////////////////////////*/

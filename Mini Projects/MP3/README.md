@@ -10,12 +10,24 @@ To compile and run this parser program, begin with the the command 'make'
 To run the program, use the following command:
 `./placement <fp_file>` 
 
-you may also use the test.sh script to make and run the program for all .fp files in the fpFiles directory.
+you may also use the p1.sh script to make and run the program for all .fp files in the fpFiles directory.
 
-The program calculates and outputs the chip area, chip dimensions, and positive and negative loci, and coordinates of all the modules. The output can be found in the folder 'output' created during execution. The files are saved in the format `'inputFileName_Christopher_Patterson.txt'`.
+The program calculates and outputs the chip area, chip dimensions, and positive and negative loci, and coordinates of all the modules. The output can be found in the folder 'output' created during execution. The files are saved in the format `'inputFileName_Christopher_Patterson.out1'`.
 
 ### Phase 2
-TBD
+The task of phase 2 was to perform simulated annealing on the module placement to cut down on wire length, area, or both. The annealing engine from MP2 was modified to handle the new input of modules in placement. 
+Specifically, initialization of annealing was done dynamically to ensure about 90% of moves will be accepted in the first annealing step. This is done by averaging the delta cost of 50 perturbations and scaling k to meet 90% acceptance. 
+
+Initial temp, T_O, was tested to find a balance between runtime and cost reduction. Initially T_O was set large but after ploting cost over time, it was found that the algorithm converges quite quickly and could instead start at a smaller temp like 500. It was noticed with smaller circuits that as annealing converged, there would be several consecutive iterations which would result in no moves made. Here the algorithm automatically terminates after 10 no move steps as the extra time to compute the steps does not provide a return on cost reduction.
+
+To compile, begin with the the command 'make'
+To run the program, use the following command:
+`./placement <fp_file> <option>` option={-a,-w,-c} where -a will optimize for chip area, -w for wire lenght, and -c for a combination of both using the equation cost = alpha*area+(1-alpha)HPWL 
+
+You may also use the p2.sh script to make and run the program for all .fp files in the fpFiles directory and each optimization choice.
+
+The program calculates and outputs the chip area, chip dimensions, positive and negative loci, coordinates of all the modules, and final HPWL. The output can be found in the folder 'output' created during execution. The files are saved in the format `'inputFileName_Christopher_Patterson.out2a'`, `'inputFileName_Christopher_Patterson.out2w'`, or `'inputFileName_Christopher_Patterson.out2c'` depending on the supplied command line option.
+
 
 
 
